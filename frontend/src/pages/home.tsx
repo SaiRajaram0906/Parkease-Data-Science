@@ -7,6 +7,7 @@ import { useListSpots } from "@workspace/api-client-react";
 import { useState } from "react";
 import { useGoogleMaps } from "@/context/GoogleMapsContext";
 import { useAuth } from "@/context/AuthContext";
+import { InstallAppButton } from "@/components/layout/InstallAppButton";
 
 export default function Home() {
   const [, setLocation] = useLocation();
@@ -137,6 +138,7 @@ export default function Home() {
               </form>
             </div>
             )}
+            <InstallAppButton className="mt-4 w-full sm:w-auto md:hidden" />
           </div>
         </div>
       </section>
@@ -201,7 +203,7 @@ export default function Home() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {(featuredSpots || []).slice(0, 4).map((spot) => (
-              <Link key={spot.id} href={`/spots/${spot.id}`}>
+              <Link key={spot.id} href={`/spots/${spot.id}`} className="block min-w-0">
                 <div className="group bg-card rounded-xl border overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer flex flex-col h-full">
                   <div className="relative h-48 bg-muted">
                     <img 

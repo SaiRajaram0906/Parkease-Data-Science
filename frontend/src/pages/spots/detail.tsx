@@ -24,7 +24,7 @@ import BookingModal from "@/components/booking/BookingModal";
 import { useAuth } from "@/context/AuthContext";
 import { AvailabilityForecast } from "@/components/ds/AvailabilityForecast";
 import { EditLocationDialog } from "@/components/map/EditLocationDialog";
-import { directionsUrl, validCoordinates } from "@/lib/places";
+import { openDirections, validCoordinates } from "@/lib/places";
 import type { SpotExtras } from "@/lib/app-api";
 
 export default function SpotDetail() {
@@ -110,16 +110,12 @@ export default function SpotDetail() {
     setBookingModalOpen(true);
   };
 
-  // Directions end at the spot's exact map pin (see lib/places). The starting
-  // point is left to Google Maps, which knows the driver's position better
-  // than the browser does.
+  // Directions from the driver's own position to the spot's map pin.
   const handleGetDirections = () => {
-    const url = spot ? directionsUrl(spot as typeof spot & SpotExtras) : null;
-    if (!url) {
-      toast({ title: "Location not available", description: "This spot has no location set.", variant: "destructive" });
-      return;
-    }
-    window.open(url, "_blank", "noopener");
+    if (!spot) return;
+    openDirections(spot as typeof spot & SpotExtras, (title, description, bad) =>
+      toast({ title, description, variant: bad ? "destructive" : undefined }),
+    );
   };
 
   if (isLoading) {

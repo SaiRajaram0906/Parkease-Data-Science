@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { PayoutsAdmin } from "@/components/payments/PayoutsAdmin";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/context/AuthContext";
 import { changeUserRole, listAllSpots, listAllUsers } from "@/lib/auth-api";
@@ -89,6 +90,7 @@ export default function Admin() {
         <TabsList className="mb-5">
           <TabsTrigger value="users">Users</TabsTrigger>
           <TabsTrigger value="listings">Listings</TabsTrigger>
+          <TabsTrigger value="payouts">Payouts</TabsTrigger>
         </TabsList>
 
         <TabsContent value="users">
@@ -181,6 +183,12 @@ export default function Admin() {
                 </table>
               </div>
             )}
+          </ChartCard>
+        </TabsContent>
+
+        <TabsContent value="payouts">
+          <ChartCard title="Owner payouts" description="What each parking owner has earned, been paid, and is still owed.">
+            <PayoutsAdmin />
           </ChartCard>
         </TabsContent>
       </Tabs>

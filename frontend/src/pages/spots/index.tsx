@@ -243,7 +243,7 @@ export default function Spots() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 animate-in fade-in duration-500">
           {spots?.map((spot, i) => (
-            <Link key={spot.id} href={`/spots/${spot.id}`}>
+            <Link key={spot.id} href={`/spots/${spot.id}`} className="block min-w-0">
               <Card className="overflow-hidden hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer h-full flex flex-col group border-border/50">
                 <div className="relative h-48 bg-muted">
                   <img 

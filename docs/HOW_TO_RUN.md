@@ -93,6 +93,60 @@ and start the three terminals again as above. `pnpm install` is needed
 because the update uses two new packages (one sends email, one draws QR
 codes). The models do not need retraining.
 
+## Taking real payments with Razorpay (optional)
+
+Without Razorpay keys the app runs in **demo payment mode**: bookings are
+marked paid, no money moves, and the payment screen says so.
+
+1. Create a free account at https://dashboard.razorpay.com and switch to
+   **Test Mode**.
+2. Open **Account & Settings → API Keys → Generate Key**. Copy the Key ID
+   (`rzp_test_...`) and the Key Secret.
+3. In `backend/.env`, remove the `#` from the two `RAZORPAY_` lines and paste
+   the keys. Restart the API server (terminal 2).
+4. Book a spot as a driver. Razorpay Checkout opens. In test mode, pay by UPI
+   with `success@razorpay` (or `failure@razorpay` to see a failed payment).
+
+How it works: the server works out the price, holds the slot and creates a
+Razorpay order; after paying, it checks Razorpay's signature before
+confirming the booking. A slot held for a payment that is not finished is
+released after 15 minutes. Cancelling before the start time refunds in full
+through Razorpay (5–7 working days); cancelling after the start does not.
+
+Owners: **Dashboard → Earnings and payouts** shows what completed bookings
+earned, the platform commission (10%, `PLATFORM_COMMISSION_PERCENT`), what
+was paid out and the balance, and where the owner saves their UPI ID.
+Admin: **Admin → Payouts** lists every owner's balance; send the money by
+UPI or bank transfer and record it with the transaction reference.
+
+To take real money you must switch Razorpay to **Live Mode**: complete
+Razorpay's account activation (business and bank details, KYC), add the
+website where payments are collected (it must be online, not `localhost`),
+and replace the test keys with the live ones (`rzp_live_...`).
+
+## Using it on a phone
+
+Every page works at phone size, with a tab bar at the bottom. To open it on
+your phone:
+
+- **Same Wi-Fi, quick look:** find your PC's address with `ipconfig` (IPv4
+  Address, for example 192.168.1.5) and open `http://192.168.1.5:5173` on the
+  phone. The PC's firewall must allow port 5173.
+- **Full features (GPS for directions, Install app):** browsers only allow
+  these on `https://` addresses. Install Cloudflare's tunnel once:
+  ```
+  winget install --id Cloudflare.cloudflared
+  ```
+  then, with the three terminals running, open a fourth one and run:
+  ```
+  cloudflared tunnel --url http://localhost:5173
+  ```
+  It prints an `https://....trycloudflare.com` address; open that on the
+  phone. In Chrome on Android choose **Install app** (in the menu, or the
+  button on the home page); on iPhone use Safari **Share → Add to Home
+  Screen**. If the map stays grey there, allow that address for your Google
+  Maps API key in the Google Cloud console.
+
 ## Sending real emails (optional)
 
 Booking messages always appear in the app. To also send them by email, open
@@ -134,6 +188,10 @@ ParkEase data. Pressing it again does nothing.
 | Use a free booking | Driver | Book Now, tick "Use a free parking reward" |
 | QR entry pass and numbered slot | Driver | Book a large place (for example Saravana Stores Parking), then open the booking |
 | Start and end messages | Driver | Bell in the top bar, the booking page, and email |
+| Directions from your exact position | Driver | Spot or booking page, "Get Directions" (allow location access) |
+| Pay, cancel and get refunded | Driver | Book Now, then the booking page |
+| Earnings, commission and payout UPI ID | Owner | Dashboard, "Earnings and payouts" |
+| Record payouts to owners | Admin | Admin, "Payouts" |
 | List a spot with city, state, latitude and longitude filled in | Owner | List Your Spot |
 | Correct a listing's map pin | Owner | The spot page, "Edit location" |
 | Check a QR entry pass | Owner | Verify Entry |

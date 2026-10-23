@@ -11,6 +11,8 @@ import adminRouter from "./admin";
 import assistantRouter from "./assistant";
 import rewardsRouter from "./rewards";
 import notificationsRouter from "./notifications";
+import paymentsRouter from "./payments";
+import payoutsRouter from "./payouts";
 import { attachUser } from "../lib/auth";
 
 const router: IRouter = Router();
@@ -24,6 +26,8 @@ router.use(adminRouter);
 router.use(assistantRouter);
 router.use(rewardsRouter);
 router.use(notificationsRouter);
+router.use(paymentsRouter);
+router.use(payoutsRouter);
 router.use(spotsRouter);
 router.use(bookingsRouter);
 router.use(usersRouter);

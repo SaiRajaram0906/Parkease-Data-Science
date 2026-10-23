@@ -88,31 +88,79 @@ export function validCoordinates(latitude?: string | null, longitude?: string | 
   return { lat, lng };
 }
 
-/**
- * Google Maps directions to a spot.
- *
- * The destination is the spot's exact map pin (latitude,longitude), so the
- * route ends at the pin and not at whatever Google guesses from the address
- * text. Well-known places carry a name to search for instead, and a spot
- * without a pin falls back to its address. The starting point is left to
- * Google Maps ("Your location"), which is more accurate than the browser.
- */
-export function directionsUrl(spot: {
+type DirectionsSpot = {
   latitude?: string | null;
   longitude?: string | null;
   address?: string | null;
   city?: string | null;
   state?: string | null;
   directionsQuery?: string | null;
-}): string | null {
+};
+
+/**
+ * Where the route should end: the spot's exact map pin (latitude,longitude).
+ * Only the well-known demo places, whose pins are approximate, are searched
+ * by name instead; a spot without a pin falls back to its address.
+ */
+export function directionsDestination(spot: DirectionsSpot): string | null {
   const pin = validCoordinates(spot.latitude, spot.longitude);
-  let destination: string | null = null;
-  if (spot.directionsQuery?.trim()) destination = spot.directionsQuery.trim();
-  else if (pin) destination = `${pin.lat},${pin.lng}`;
-  else {
-    const address = [spot.address, spot.city, spot.state].filter(Boolean).join(", ");
-    destination = address || null;
-  }
+  if (spot.directionsQuery?.trim()) return spot.directionsQuery.trim();
+  if (pin) return `${pin.lat},${pin.lng}`;
+  const address = [spot.address, spot.city, spot.state].filter(Boolean).join(", ");
+  return address || null;
+}
+
+/** Google Maps directions link. `origin` is "lat,lng" of the driver, when known. */
+export function directionsUrl(spot: DirectionsSpot, origin?: string): string | null {
+  const destination = directionsDestination(spot);
   if (!destination) return null;
-  return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}&travelmode=driving`;
+  const params = new URLSearchParams({ api: "1", destination, travelmode: "driving" });
+  if (origin) params.set("origin", origin);
+  return `https://www.google.com/maps/dir/?${params.toString()}`;
+}
+
+/**
+ * Opens Google Maps directions from the driver's current position (GPS on a
+ * phone) to the spot. Both ends are sent as latitude,longitude, so Google
+ * does not have to guess either of them.
+ *
+ * The new tab is opened straight away, while the click still counts as the
+ * user's action (otherwise browsers block it as a pop-up), and is pointed at
+ * the route once the position is known. If the position cannot be read, the
+ * route starts from Google's own "Your location".
+ */
+export function openDirections(
+  spot: DirectionsSpot,
+  notify: (title: string, description: string, bad?: boolean) => void,
+): void {
+  const fallback = directionsUrl(spot);
+  if (!fallback) {
+    notify("Location not available", "This spot has no location set.", true);
+    return;
+  }
+  const tab = window.open("", "_blank");
+  const go = (url: string) => {
+    if (tab && !tab.closed) tab.location.href = url;
+    else window.location.href = url;
+  };
+  if (!("geolocation" in navigator) || !window.isSecureContext) {
+    notify("Using Google's location", "This page cannot read your position (it needs https or localhost), so Google Maps will find you.");
+    go(fallback);
+    return;
+  }
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      const { latitude, longitude, accuracy } = pos.coords;
+      const origin = `${latitude.toFixed(6)},${longitude.toFixed(6)}`;
+      if (accuracy > 1000) {
+        notify("Your position is approximate", `This device knows your location only to about ${(accuracy / 1000).toFixed(1)} km. On a phone with GPS it is exact.`);
+      }
+      go(directionsUrl(spot, origin)!);
+    },
+    () => {
+      notify("Location permission needed", "Allow location access for exact directions. Opening Google Maps with its own location instead.");
+      go(fallback);
+    },
+    { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 },
+  );
 }

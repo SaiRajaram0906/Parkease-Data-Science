@@ -1,17 +1,17 @@
-import { randomBytes } from "node:crypto";
 import { Router, type IRouter } from "express";
-import { eq, and, desc, lt, gt, ne, inArray } from "drizzle-orm";
+import { eq, and, desc, inArray } from "drizzle-orm";
 import { db, bookingsTable, spotsTable, usersTable, type Booking } from "@workspace/db";
 import { updateBookingStatuses } from "../lib/tasks";
 import {
   ListBookingsQueryParams,
-  CreateBookingBody,
   GetBookingParams,
   UpdateBookingParams,
   UpdateBookingBody,
 } from "@workspace/api-zod";
 import { currentUser, isAdmin, requireAuth, requireRole } from "../lib/auth";
-import { rewardSummary } from "../lib/rewards";
+import { prepareBooking } from "../lib/bookingRules";
+import { paymentSettings, refundPayment, PaymentError } from "../lib/payments";
+import { logger } from "../lib/logger";
 
 /**
  * Bookings. Every route needs a signed-in user.
@@ -30,17 +30,6 @@ import { rewardSummary } from "../lib/rewards";
  */
 const router: IRouter = Router();
 router.use("/bookings", requireAuth);
-
-// Letters and digits that cannot be confused with each other (no 0/O, 1/I).
-const CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-function newVerifyCode(): string {
-  const bytes = randomBytes(8);
-  let code = "";
-  for (const byte of bytes) code += CODE_ALPHABET[byte % CODE_ALPHABET.length];
-  return `PE-${code}`;
-}
-
-const slotLabel = (n: number): string => `P-${String(n).padStart(3, "0")}`;
 
 /** A vehicle may enter from 15 minutes before the start until the end. */
 const EARLY_ENTRY_MS = 15 * 60 * 1000;
@@ -177,100 +166,35 @@ router.get("/bookings", async (req, res): Promise<void> => {
   res.json(bookings);
 });
 
+/**
+ * Books a spot without going through Razorpay. This is used for free reward
+ * bookings, and for every booking while the app runs in demo (simulated)
+ * payment mode. When Razorpay keys are set, paid bookings must go through
+ * POST /payments/checkout instead.
+ */
 router.post("/bookings", requireRole("driver", "admin"), async (req, res): Promise<void> => {
-  const parsed = CreateBookingBody.safeParse(req.body);
-  if (!parsed.success) {
-    res.status(400).json({ error: parsed.error.message });
-    return;
-  }
-
-  const spot = await db
-    .select()
-    .from(spotsTable)
-    .where(eq(spotsTable.id, parsed.data.spotId));
-
-  if (!spot[0]) {
-    res.status(404).json({ error: "Spot not found" });
-    return;
-  }
-  if (!spot[0].isActive) {
-    res.status(400).json({ error: "This spot is not accepting bookings right now." });
-    return;
-  }
-
-  const requestedStart = new Date(parsed.data.startTime);
-  const requestedEnd = new Date(parsed.data.endTime);
-  const hours = (requestedEnd.getTime() - requestedStart.getTime()) / 3_600_000;
-  if (!Number.isFinite(hours) || hours <= 0) {
-    res.status(400).json({ error: "The end time must be after the start time." });
-    return;
-  }
-
-  // Check for overlaps with existing confirmed/completed bookings
-  // A booking overlaps if: (ExistingStart < RequestedEnd) AND (ExistingEnd > RequestedStart)
-  const overlappingBookings = await db
-    .select()
-    .from(bookingsTable)
-    .where(
-      and(
-        eq(bookingsTable.spotId, parsed.data.spotId),
-        ne(bookingsTable.status, "cancelled"), // Consider both confirmed and completed
-        lt(bookingsTable.startTime, requestedEnd),
-        gt(bookingsTable.endTime, requestedStart)
-      )
-    );
-
-  if (overlappingBookings.length >= spot[0].totalSlots) {
-    res.status(400).json({ error: "The chosen time slot is already booked. Please select a different time." });
-    return;
-  }
-
   const user = currentUser(res)!;
-
-  // Free-parking reward: only if the driver really has one to use.
-  const useReward = req.body?.useReward === true;
-  if (useReward && (await rewardSummary(user.id)).available < 1) {
-    res.status(400).json({ error: "You do not have a free parking reward to use yet." });
+  const prepared = await prepareBooking(req.body, user);
+  if (!prepared.ok) {
+    res.status(prepared.status).json({ error: prepared.error });
     return;
   }
-
-  // The price is worked out here, never taken from the browser.
-  const amount = useReward ? 0 : Number(spot[0].pricePerHour) * hours;
-
-  // Large facility: keep the lowest-numbered slot that is free for this time.
-  let keptSlot: string | null = null;
-  if (spot[0].isLargeFacility) {
-    const taken = new Set(overlappingBookings.map((b) => b.slotLabel));
-    for (let n = 1; n <= spot[0].totalSlots; n += 1) {
-      if (!taken.has(slotLabel(n))) {
-        keptSlot = slotLabel(n);
-        break;
-      }
-    }
+  const free = prepared.useReward || prepared.amount === 0;
+  if (!free && paymentSettings().mode === "razorpay") {
+    res.status(400).json({ error: "Please pay for this booking through checkout.", code: "PAYMENT_REQUIRED" });
+    return;
   }
-
   const [booking] = await db
     .insert(bookingsTable)
     .values({
-      ...parsed.data,
-      // A booking always belongs to the signed-in user.
-      userId: user.id,
-      userEmail: user.email,
-      startTime: requestedStart,
-      endTime: requestedEnd,
-      durationHours: hours.toFixed(2),
-      totalAmount: amount.toFixed(2),
-      spotName: spot[0].name,
+      ...prepared.values,
       status: "confirmed",
-      paymentStatus: useReward ? "paid" : "pending",
-      paymentId: useReward ? "REWARD" : null,
-      notes: useReward ? "Free parking reward" : parsed.data.notes,
-      isReward: useReward,
-      verifyCode: newVerifyCode(),
-      slotLabel: keptSlot,
+      paymentStatus: "paid",
+      paymentMode: prepared.useReward ? "reward" : "simulated",
+      paymentId: prepared.useReward ? "REWARD" : `SIM-${Date.now().toString(36).toUpperCase()}`,
+      notes: prepared.useReward ? "Free parking reward" : prepared.values.notes,
     })
     .returning();
-
   res.status(201).json(booking);
 });
 
@@ -339,13 +263,66 @@ router.patch("/bookings/:id", async (req, res): Promise<void> => {
     }
   }
 
+  const changes: Partial<typeof bookingsTable.$inferInsert> = { ...parsed.data };
+
+  // Cancelling a paid booking refunds it:
+  //   - in full when the driver cancels before the parking time starts
+  //   - in full whenever the spot owner or an admin cancels
+  //   - not at all when the driver cancels after the start time
+  if (parsed.data.status === "cancelled" && existing.status !== "cancelled") {
+    Object.assign(changes, await refundFor(existing, relation));
+  }
+
   const [booking] = await db
     .update(bookingsTable)
-    .set(parsed.data)
+    .set(changes)
     .where(eq(bookingsTable.id, params.data.id))
     .returning();
 
   res.json(booking);
+});
+
+async function refundFor(existing: Booking, relation: "driver" | "owner" | "admin") {
+  if (existing.paymentStatus !== "paid" || existing.paymentMode === "reward" || Number(existing.totalAmount) <= 0) {
+    return {};
+  }
+  const started = Date.now() >= existing.startTime.getTime();
+  if (relation === "driver" && started) {
+    return { refundError: "No refund: the booking was cancelled after the parking time started." };
+  }
+  if (existing.paymentMode !== "razorpay" || !existing.paymentId?.startsWith("pay_")) {
+    // Demo payment: nothing was charged, so the refund is only recorded.
+    return { paymentStatus: "refunded", refundId: "SIMULATED", refundError: null };
+  }
+  try {
+    const refund = await refundPayment(existing.paymentId, `refund_booking_${existing.id}`);
+    return { paymentStatus: "refunded", refundId: refund.id, refundError: null };
+  } catch (err) {
+    const message = err instanceof PaymentError ? err.message : "Refund failed.";
+    logger.error({ err, bookingId: existing.id }, "Refund failed");
+    return { paymentStatus: "refund_failed", refundError: message };
+  }
+}
+
+/** Admin: try a failed refund again. */
+router.post("/bookings/:id/retry-refund", requireRole("admin"), async (req, res): Promise<void> => {
+  const id = Number(req.params["id"]);
+  const [existing] = await db.select().from(bookingsTable).where(eq(bookingsTable.id, id));
+  if (!existing || existing.paymentStatus !== "refund_failed" || !existing.paymentId) {
+    res.status(400).json({ error: "This booking has no failed refund to retry." });
+    return;
+  }
+  try {
+    const refund = await refundPayment(existing.paymentId, `refund_booking_${existing.id}`);
+    const [booking] = await db
+      .update(bookingsTable)
+      .set({ paymentStatus: "refunded", refundId: refund.id, refundError: null })
+      .where(eq(bookingsTable.id, id))
+      .returning();
+    res.json(booking);
+  } catch (err) {
+    res.status(502).json({ error: err instanceof PaymentError ? err.message : "Refund failed." });
+  }
 });
 
 export default router;

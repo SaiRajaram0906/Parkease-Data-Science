@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useToast } from "@/hooks/use-toast";
 import { NotificationBell } from "@/components/notifications/NotificationBell";
+import { InstallAppButton } from "@/components/layout/InstallAppButton";
 
 const ROLE_COLORS: Record<string, string> = {
   admin: "bg-red-500/15 text-red-600",
@@ -184,6 +185,7 @@ export function Navbar() {
               </Link>
             ))}
             <div className="mt-4 pt-4 border-t flex flex-col gap-2">
+              <InstallAppButton className="w-full justify-center" />
               {showListSpot && (
                 <Link href="/list-spot" onClick={() => setMobileMenuOpen(false)}>
                   <Button variant="outline" className="w-full justify-center">

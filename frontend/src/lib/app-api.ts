@@ -154,4 +154,113 @@ export interface BookingExtras {
   slotLabel?: string | null;
   checkedInAt?: string | null;
   isReward?: boolean;
+  paymentMode?: "razorpay" | "simulated" | "reward" | null;
+  paymentOrderId?: string | null;
+  refundId?: string | null;
+  refundError?: string | null;
 }
+
+// --------------------------------------------------------------- payments
+export interface PaymentConfig {
+  mode: "razorpay" | "simulated";
+  keyId: string | null;
+  currency: string;
+  commissionPercent: number;
+  refundPolicy: string;
+}
+
+export function usePaymentConfig() {
+  return useQuery({
+    queryKey: ["payments", "config"],
+    queryFn: () => apiRequest<PaymentConfig>("/payments/config"),
+    staleTime: 5 * 60_000,
+  });
+}
+
+export interface BookingRequest {
+  spotId: number;
+  vehicleNumber: string;
+  vehicleType: string;
+  startTime: string;
+  endTime: string;
+  durationHours: string;
+  totalAmount: string;
+  notes?: string;
+  useReward?: boolean;
+}
+
+export interface CheckoutOrder {
+  bookingId: number;
+  keyId: string;
+  orderId: string;
+  amount: number; // paise
+  currency: string;
+  name: string;
+  description: string;
+  prefill: { name: string; email: string; contact: string };
+}
+
+export const startCheckout = (body: BookingRequest) =>
+  apiRequest<CheckoutOrder>("/payments/checkout", { method: "POST", body });
+
+export const verifyPayment = (body: { bookingId: number; razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) =>
+  apiRequest<Record<string, unknown> & { id: number; slotLabel?: string | null; totalAmount: string }>("/payments/verify", { method: "POST", body });
+
+export const abandonPayment = (bookingId: number, reason: string) =>
+  apiRequest<{ released: boolean }>("/payments/abandon", { method: "POST", body: { bookingId, reason } });
+
+export const createBookingDirect = (body: BookingRequest) =>
+  apiRequest<Record<string, unknown> & { id: number; slotLabel?: string | null; totalAmount: string; isReward?: boolean; paymentMode?: string }>(
+    "/bookings", { method: "POST", body });
+
+export const retryRefund = (bookingId: number) => apiRequest<unknown>(`/bookings/${bookingId}/retry-refund`, { method: "POST" });
+
+// ----------------------------------------------------------------- payouts
+export interface Payout {
+  id: number;
+  ownerId: number;
+  amount: string;
+  reference: string;
+  note: string | null;
+  createdAt: string;
+}
+
+export interface EarningsSummary {
+  ownerId: number;
+  ownerName: string;
+  ownerEmail: string | null;
+  payoutUpi: string | null;
+  payoutName: string | null;
+  completedPaidBookings: number;
+  gross: number;
+  commissionPercent: number;
+  commission: number;
+  net: number;
+  paidOut: number;
+  balance: number;
+  payouts: Payout[];
+}
+
+export const EARNINGS_KEY = ["payouts", "summary"] as const;
+
+export function useEarnings(enabled = true) {
+  return useQuery({
+    queryKey: EARNINGS_KEY,
+    queryFn: () => apiRequest<EarningsSummary>("/payouts/summary"),
+    enabled,
+  });
+}
+
+export function useOwnerBalances(enabled = true) {
+  return useQuery({
+    queryKey: ["payouts", "owners"],
+    queryFn: () => apiRequest<Array<Omit<EarningsSummary, "payouts"> & { payoutCount: number }>>("/payouts/owners"),
+    enabled,
+  });
+}
+
+export const savePayoutDetails = (body: { payoutUpi: string; payoutName: string }) =>
+  apiRequest<{ payoutUpi: string | null; payoutName: string | null }>("/payouts/details", { method: "PATCH", body });
+
+export const recordPayout = (body: { ownerId: number; amount: number; reference: string; note?: string }) =>
+  apiRequest<Payout>("/payouts", { method: "POST", body });

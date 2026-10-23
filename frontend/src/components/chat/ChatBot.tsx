@@ -3,7 +3,6 @@ import { MessageCircle, Send, X, Bot, MapPin, IndianRupee, ExternalLink, Loader2
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { useGoogleMaps } from "@/context/GoogleMapsContext";
 import { Link } from "wouter";
 import { assistantSearch, type AssistantResult } from "@/lib/app-api";
@@ -16,7 +15,7 @@ interface Message {
   timestamp: Date;
 }
 
-export function ChatBot() {
+export function ChatBot({ aboveTabBar = false }: { aboveTabBar?: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([
@@ -34,7 +33,7 @@ export function ChatBot() {
 
   useEffect(() => {
     if (bottomRef.current) {
-      bottomRef.current.scrollIntoView({ behavior: 'smooth' });
+      bottomRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }, [messages, isTyping]);
 
@@ -211,9 +210,9 @@ export function ChatBot() {
           )}
         </p>
         {shown.map((spot) => (
-          <Card key={spot.id} className="overflow-hidden border shadow-sm hover:shadow-md transition-shadow">
-            <div className="flex gap-3 p-2">
-              <img src={spot.imageUrl || "/spot-placeholder.jpg"} className="w-16 h-16 object-cover rounded" alt="" />
+          <Card key={spot.id} className="overflow-hidden border shadow-sm hover:shadow-md transition-shadow min-w-0">
+            <div className="flex gap-3 p-2 min-w-0">
+              <img src={spot.imageUrl || "/spot-placeholder.jpg"} className="w-16 h-16 shrink-0 object-cover rounded" alt="" />
               <div className="flex-1 min-w-0">
                 <h4 className="font-bold text-sm truncate">{spot.name}</h4>
                 <div className="flex flex-wrap items-center text-xs text-muted-foreground mt-1 gap-x-2">
@@ -245,27 +244,37 @@ export function ChatBot() {
     return q === "hi" || q === "hello" || q === "hey" || q === "help";
   };
 
+  // On a phone the bottom tab bar sits under everything, so the assistant
+  // stays above it. The panel is never wider or taller than the screen.
+  const bottom = aboveTabBar ? "bottom-[calc(env(safe-area-inset-bottom)+5rem)] md:bottom-6" : "bottom-6";
+
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <>
       {isOpen && (
-        <Card className="w-[350px] sm:w-[400px] h-[500px] mb-4 flex flex-col shadow-2xl border-2 animate-in slide-in-from-bottom-4 duration-300">
-          <div className="p-4 bg-primary text-primary-foreground rounded-t-lg flex justify-between items-center shadow-md">
-            <div className="flex items-center gap-2">
+        <Card
+          role="dialog"
+          aria-label="AI Parking Assistant"
+          className={`fixed z-50 ${bottom} left-3 right-3 sm:left-auto sm:right-6 sm:w-[400px] h-[min(560px,calc(100dvh-8rem))] flex flex-col overflow-hidden shadow-2xl border-2 animate-in slide-in-from-bottom-4 duration-300`}
+        >
+          <div className="p-4 bg-primary text-primary-foreground flex justify-between items-center shadow-md shrink-0">
+            <div className="flex items-center gap-2 min-w-0">
               <div className="bg-primary-foreground/20 p-1.5 rounded-full">
                 <Bot className="h-5 w-5" />
               </div>
-              <span className="font-bold tracking-tight">AI Parking Assistant</span>
+              <span className="font-bold tracking-tight truncate">AI Parking Assistant</span>
             </div>
-            <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary-foreground/20 -mr-2" onClick={() => setIsOpen(false)}>
+            <Button variant="ghost" size="icon" aria-label="Close the parking assistant" className="text-primary-foreground hover:bg-primary-foreground/20 -mr-2" onClick={() => setIsOpen(false)}>
               <X className="h-5 w-5" />
             </Button>
           </div>
 
-          <ScrollArea className="flex-1 p-4">
+          {/* A plain scrolling box: it scrolls up and down only, so nothing can
+              be pushed out of view to the right. */}
+          <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-contain p-4">
             <div className="space-y-4">
               {messages.map((m) => (
                 <div key={m.id} className={`flex ${m.type === "user" ? "justify-end" : "justify-start"}`}>
-                  <div className={`max-w-[85%] p-3 rounded-2xl text-sm shadow-sm whitespace-pre-line ${
+                  <div className={`${m.type === "user" ? "max-w-[85%]" : "w-[92%]"} min-w-0 break-words p-3 rounded-2xl text-sm shadow-sm whitespace-pre-line ${
                     m.type === "user" 
                       ? "bg-primary text-primary-foreground rounded-br-none" 
                       : "bg-muted text-foreground rounded-bl-none border"
@@ -286,9 +295,9 @@ export function ChatBot() {
               )}
               <div ref={bottomRef} />
             </div>
-          </ScrollArea>
+          </div>
 
-          <div className="p-3 border-t bg-muted/30">
+          <div className="p-3 border-t bg-muted/30 shrink-0">
             <form onSubmit={(e) => { e.preventDefault(); handleSend(); }} className="flex gap-2">
               <Input 
                 placeholder="Ask for parking near a place..."
@@ -305,14 +314,16 @@ export function ChatBot() {
         </Card>
       )}
 
-      <Button 
-        size="lg" 
-        className={`rounded-full h-14 w-14 shadow-2xl transition-all duration-300 hover:scale-110 ${isOpen ? "rotate-90 opacity-0 pointer-events-none" : ""}`}
-        onClick={() => setIsOpen(true)}
-      >
-        <MessageCircle className="h-6 w-6" />
-        <span className="sr-only">Open the parking assistant</span>
-      </Button>
-    </div>
+      {!isOpen && (
+        <Button
+          size="lg"
+          className={`fixed z-40 ${bottom} right-4 sm:right-6 rounded-full h-14 w-14 shadow-2xl transition-transform duration-300 hover:scale-110`}
+          onClick={() => setIsOpen(true)}
+        >
+          <MessageCircle className="h-6 w-6" />
+          <span className="sr-only">Open the parking assistant</span>
+        </Button>
+      )}
+    </>
   );
 }

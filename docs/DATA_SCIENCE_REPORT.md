@@ -12,7 +12,7 @@ ParkEase now uses a year of historical parking data to help drivers choose a spo
 - **Models.** Three models were trained and tested on months they had not seen. All three beat their baselines, by modest margins: the dataset contains a lot of deliberate noise, and the scores below are reported as measured.
 - **Integration.** Predictions are computed by a Python service and reach the app through the existing API server. When the service is off, the app shows a clear "unavailable" state instead of numbers.
 - **Roles.** Driver, owner and admin are now real roles: sign-in checks a password, and the server decides what each role may do.
-- **Testing.** 35 automated tests, 185 end-to-end API checks and 95 browser checks pass. The full typecheck, which failed before the work started, now passes.
+- **Testing.** 35 automated tests, 189 end-to-end API checks, 113 browser checks (including phone-sized pages) and 38 payment checks pass. The full typecheck, which failed before the work started, now passes.
 
 | Model | Chosen algorithm | Test result | Baseline |
 |---|---|---|---|
@@ -378,6 +378,16 @@ These are ordinary application features. They do not use the models or the synth
 
 **Large parking places and QR entry.** A listing can be marked as a large facility. Each booking there keeps a numbered slot and gets a pass code shown as a QR code. The QR code opens the owner's Verify Entry page, which reports valid, too early, expired, cancelled or already used, and records the entry. Five large places are added automatically for the demo owner: Saravana Stores, Jeyachandran Textiles, Pondy Bazaar and Panagal Park in T. Nagar, and one next to Rajalakshmi Engineering College. They are demo listings: the slot counts and prices are examples, not figures from those businesses, and their map pins are approximate, so Get Directions searches Google Maps for the place by name.
 
+# 10b. Real-world readiness: payments, phones, directions
+
+**Payments (Razorpay).** With Razorpay keys set, the server calculates the price, holds the slot (status "pending") and creates a Razorpay order; the browser opens Razorpay Checkout (UPI, cards, net banking, wallets); the server confirms the booking only after checking the signature HMAC-SHA256(order_id | payment_id, key secret), using the order id from its own records. Unfinished payments release their slot after 15 minutes. Cancelling before the start refunds in full through the Razorpay refunds API; the spot owner or an admin cancelling always refunds; a refund Razorpay rejects is recorded and an admin can retry it. Without keys the app runs in a clearly labelled demo payment mode.
+
+**Owner payouts.** Owners see what completed, paid bookings earned, the platform commission (default 10%), what has been paid out and the balance, and save a UPI ID. Admins see every owner's balance and record each payout with its transaction reference. Automatic transfers through Razorpay Route need Razorpay's separate eligibility review and are not built in.
+
+**Phones.** The web app is installable (manifest, icons, service worker) and has a bottom tab bar on phones; every page was checked at 390 px wide for sideways scrolling. The booking time lists are native selects, and choosing an end time that is not after the start shows a "Wrong timing selection" pop-up instead of a negative price.
+
+**Directions.** Get Directions sends Google Maps the driver's own GPS position (latitude, longitude) as the start and the spot's map pin as the destination. Browsers only share GPS on https or localhost.
+
 # 11. API documentation
 
 All routes are under `/api` on the existing server.
@@ -474,7 +484,7 @@ What the checks covered, against the list in the brief:
 
 **Existing application, unchanged**
 
-- Payment is simulated.
+- Payments are simulated unless Razorpay keys are set; live payments need Razorpay account activation and a public https website. Razorpay webhooks are not used yet, so a payment completed after the 15-minute hold must be refunded from the Razorpay dashboard.
 - Secrets are committed in the repository and should be rotated.
 
 # 14. Coverage of the Principles of Data Science

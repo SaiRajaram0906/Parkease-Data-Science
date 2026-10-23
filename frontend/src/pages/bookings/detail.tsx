@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { useParams } from "wouter";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { useGetBooking, getGetBookingQueryKey, useUpdateBooking, useGetSpot, getGetSpotQueryKey } from "@workspace/api-client-react";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -10,7 +12,7 @@ import { MapPin, Calendar, Clock, Car, CreditCard, AlertCircle, Navigation, QrCo
 import { QRCodeSVG } from "qrcode.react";
 import { REWARDS_KEY, passUrl, useNotifications, type BookingExtras, type SpotExtras } from "@/lib/app-api";
 import { NotificationItem } from "@/components/notifications/NotificationBell";
-import { directionsUrl } from "@/lib/places";
+import { directionsUrl, openDirections } from "@/lib/places";
 import { useToast } from "@/hooks/use-toast";
 import { useQueryClient } from "@tanstack/react-query";
 
@@ -38,22 +40,31 @@ export default function BookingDetail() {
 
   const { data: messages } = useNotifications({ bookingId: id, enabled: !!id });
 
-  // Directions end at the spot's exact map pin (see lib/places).
+  // Directions from the driver's own position to the spot's map pin.
   const directions = spot ? directionsUrl(spot as typeof spot & SpotExtras) : null;
   const handleGetDirections = () => {
-    if (!directions) {
-      toast({ title: "Location not available", description: "This spot has no location set.", variant: "destructive" });
-      return;
-    }
-    window.open(directions, "_blank", "noopener");
+    if (!spot) return;
+    openDirections(spot as typeof spot & SpotExtras, (title, description, bad) =>
+      toast({ title, description, variant: bad ? "destructive" : undefined }),
+    );
   };
 
+  const [confirmCancel, setConfirmCancel] = useState(false);
   const handleCancel = () => {
+    setConfirmCancel(false);
     updateBooking.mutate(
       { id, data: { status: 'cancelled' } },
       {
         onSuccess: (updatedBooking: any) => {
-          toast({ title: "Booking Cancelled", description: "Your booking has been successfully cancelled." });
+          const refunded = updatedBooking?.paymentStatus === "refunded";
+          toast({
+            title: "Booking Cancelled",
+            description: refunded
+              ? updatedBooking.paymentMode === "razorpay"
+                ? `A full refund of ₹${updatedBooking.totalAmount} has been started. It reaches your account in 5–7 working days.`
+                : "Your booking has been cancelled (demo payment, nothing was charged)."
+              : updatedBooking?.refundError || "Your booking has been successfully cancelled.",
+          });
           queryClient.setQueryData(getGetBookingQueryKey(id), updatedBooking);
           queryClient.invalidateQueries({ queryKey: REWARDS_KEY });
         },
@@ -147,10 +158,12 @@ export default function BookingDetail() {
               <div className="text-sm text-muted-foreground flex items-center">
                 <CreditCard className="h-4 w-4 mr-2" /> Payment Status
               </div>
-              <div className="font-medium capitalize">
+              <div className="font-medium">
                 {pass.isReward ? (
                   <span className="inline-flex items-center gap-1.5 text-green-600"><Gift className="h-4 w-4" /> Free parking reward</span>
-                ) : booking.paymentStatus}
+                ) : (
+                  <PaymentStatus booking={pass} />
+                )}
               </div>
             </div>
           </div>
@@ -232,15 +245,72 @@ export default function BookingDetail() {
 
         {booking.status === 'pending' || booking.status === 'confirmed' ? (
           <CardFooter className="bg-muted/10 pt-6 border-t flex justify-end gap-4">
-            <Button variant="destructive" onClick={handleCancel} disabled={updateBooking.isPending}>
+            <Button variant="destructive" onClick={() => setConfirmCancel(true)} disabled={updateBooking.isPending}>
               Cancel Booking
             </Button>
-            {booking.status === 'pending' && (
-              <Button>Pay Now</Button>
-            )}
           </CardFooter>
         ) : null}
       </Card>
+
+      <AlertDialog open={confirmCancel} onOpenChange={setConfirmCancel}>
+        <AlertDialogContent className="w-[calc(100vw-2rem)] max-w-md rounded-xl">
+          <AlertDialogHeader>
+            <AlertDialogTitle>Cancel this booking?</AlertDialogTitle>
+            <AlertDialogDescription>
+              {pass.isReward
+                ? "Your free parking reward will be given back to you."
+                : new Date(booking.startTime).getTime() > Date.now()
+                  ? `Your parking has not started yet, so you get a full refund of ₹${booking.totalAmount}.`
+                  : "Your parking time has already started, so this booking cannot be refunded."}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Keep booking</AlertDialogCancel>
+            <AlertDialogAction onClick={handleCancel} className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
+              Cancel booking
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
+}
+
+/** Payment state in plain words, with the Razorpay reference when there is one. */
+function PaymentStatus({ booking }: { booking: { paymentStatus: string } & BookingExtras & { paymentId?: string | null } }) {
+  const demo = booking.paymentMode === "simulated";
+  switch (booking.paymentStatus) {
+    case "paid":
+      return (
+        <span>
+          <span className="text-green-600">Paid{demo ? " (demo, no money charged)" : ""}</span>
+          {booking.paymentMode === "razorpay" && booking.paymentId && (
+            <span className="block text-xs text-muted-foreground font-mono">{booking.paymentId}</span>
+          )}
+          {booking.refundError && <span className="block text-xs text-muted-foreground">{booking.refundError}</span>}
+        </span>
+      );
+    case "refunded":
+      return (
+        <span>
+          <span className="text-blue-600">Refunded{demo ? " (demo)" : ""}</span>
+          {booking.refundId && booking.refundId !== "SIMULATED" && (
+            <span className="block text-xs text-muted-foreground font-mono">{booking.refundId} · 5–7 working days</span>
+          )}
+        </span>
+      );
+    case "refund_failed":
+      return (
+        <span>
+          <span className="text-destructive">Refund pending</span>
+          <span className="block text-xs text-muted-foreground">{booking.refundError ?? "The refund will be retried by ParkEase."}</span>
+        </span>
+      );
+    case "pending":
+      return <span className="text-amber-600">Waiting for payment</span>;
+    case "failed":
+      return <span className="text-destructive">Payment not completed</span>;
+    default:
+      return <span className="capitalize">{booking.paymentStatus}</span>;
+  }
 }

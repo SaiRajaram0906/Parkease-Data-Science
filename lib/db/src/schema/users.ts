@@ -15,6 +15,9 @@ export const usersTable = pgTable("users", {
   // Salted scrypt hash of the password ("salt:hash", hex). Null for the demo
   // accounts and for accounts created before passwords were introduced.
   passwordHash: text("password_hash"),
+  // Where an owner wants their earnings sent (UPI ID and account holder name).
+  payoutUpi: text("payout_upi"),
+  payoutName: text("payout_name"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow().$onUpdate(() => new Date()),
 });

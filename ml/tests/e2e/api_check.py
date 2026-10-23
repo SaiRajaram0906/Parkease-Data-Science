@@ -288,12 +288,17 @@ st, s1 = call("GET", "/spots/1"); check("spot shows full", s1["availableSlots"] 
 if 6 <= hour <= 23:
     st, r = call("GET", f"/recommendations/parking?lat=13.0382255&lng=80.2285458&hour={hour}", token=DD)
     check("fully booked spot is not recommended", r["excluded"]["fully_booked"] >= 1 and all(x["spot_id"] != 1 for x in r["recommendations"]))
+check("demo payment mode: bookings are marked paid, without real money", b2["paymentStatus"] == "paid" and b2["paymentMode"] == "simulated" and b2["paymentId"].startswith("SIM-"))
 st, r = call("PATCH", f"/bookings/{b3['id']}", {"status": "cancelled"}, DD); check("driver cancels own booking", st == 200 and r["status"] == "cancelled")
+check("...after its start time: no refund, and the reason is recorded", r["paymentStatus"] == "paid" and "No refund" in (r["refundError"] or ""))
+st, r = call("GET", "/payments/config"); check("payment config says demo mode when no Razorpay keys are set", st == 200 and r["mode"] == "simulated" and r["keyId"] is None)
 st, s1 = call("GET", "/spots/1"); check("availability returns after cancellation", s1["availableSlots"] == 1)
 st, r = call("GET", f"/analytics/owner/{legacy['id']}", token=L); check("owner analytics from live bookings: no revenue before completion", r["has_data"] and r["completed_revenue"] == 0)
 st, r = call("PATCH", f"/bookings/{b2['id']}", {"status": "completed"}, L)
 st, r = call("GET", f"/analytics/owner/{legacy['id']}", token=L); check("...and revenue counts the completed booking only", r["completed_revenue"] == 50 and r["cancellation_rate"] == 50.0)
 st, r = call("GET", f"/analytics/driver/{demo_driver['id']}", token=DD); check("linked demo driver shows history", r["source"] == "history" and r["total_bookings"] == 60)
+fut = start + dt.timedelta(days=30); st, fb = book(1, DD, s=fut, e=fut + dt.timedelta(hours=1))
+st, r = call("PATCH", f"/bookings/{fb['id']}", {"status": "cancelled"}, DD); check("cancelling before the start refunds (demo refund)", r["paymentStatus"] == "refunded" and r["refundId"] == "SIMULATED")
 for path, code in (("/predictions/availability?spotId=1&hour=99", 400), ("/predictions/availability", 400), ("/predictions/demand?spotId=99999", 404), ("/predictions/availability?spotId=1&date=nonsense", 400)):
     st, _ = call("GET", path, token=A); check(f"bad request handled: {path}", st == code, str(st))
 st, a = call("GET", "/predictions/availability?spotId=1&hour=3", token=D); check("no prediction outside 06-23", all("predicted_occupancy" not in h for h in a["hours"] if h["hour"] == 3))

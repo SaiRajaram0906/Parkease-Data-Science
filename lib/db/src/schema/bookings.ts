@@ -26,6 +26,11 @@ export const bookingsTable = pgTable("bookings", {
   // True when the booking was paid with a free-parking reward.
   isReward: boolean("is_reward").notNull().default(false),
   // When the "parking has started" / "parking has ended" messages were sent.
+  // Payments: "razorpay" (real), "simulated" (demo, no money) or "reward".
+  paymentMode: text("payment_mode"),
+  paymentOrderId: text("payment_order_id"),
+  refundId: text("refund_id"),
+  refundError: text("refund_error"),
   startNotifiedAt: timestamp("start_notified_at", { withTimezone: true }),
   endNotifiedAt: timestamp("end_notified_at", { withTimezone: true }),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),

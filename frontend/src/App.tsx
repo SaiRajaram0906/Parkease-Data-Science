@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -18,6 +19,7 @@ import ListSpot from "@/pages/list-spot";
 import Login from "@/pages/auth/login";
 import VerifyEntry from "@/pages/verify";
 import { ChatBot } from "@/components/chat/ChatBot";
+import { MobileTabBar } from "@/components/layout/MobileTabBar";
 import { GoogleMapsProvider } from "@/context/GoogleMapsContext";
 
 const queryClient = new QueryClient();
@@ -55,8 +57,18 @@ function RedirectToLogin() {
 
 /** The parking assistant finds parking, so owner accounts do not get it. */
 function AssistantForDrivers() {
-  const { user } = useAuth();
-  return user?.role === "owner" ? null : <ChatBot />;
+  const { user, isAuthenticated } = useAuth();
+  return user?.role === "owner" ? null : <ChatBot aboveTabBar={isAuthenticated} />;
+}
+
+/** Leaves room at the bottom of every page for the phone tab bar. */
+function Main({ children }: { children: ReactNode }) {
+  const { isAuthenticated } = useAuth();
+  return (
+    <main className={`flex-1 flex flex-col relative ${isAuthenticated ? "pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-0" : ""}`}>
+      {children}
+    </main>
+  );
 }
 
 function Router() {
@@ -69,7 +81,7 @@ function Router() {
         <Route>
           <>
             <Navbar />
-            <main className="flex-1 flex flex-col relative">
+            <Main>
               <Switch>
                 <Route path="/" component={Home} />
                 {/* Driver pages: finding and booking parking */}
@@ -89,7 +101,8 @@ function Router() {
                 <Route component={NotFound} />
               </Switch>
               <AssistantForDrivers />
-            </main>
+            </Main>
+            <MobileTabBar />
           </>
         </Route>
       </Switch>

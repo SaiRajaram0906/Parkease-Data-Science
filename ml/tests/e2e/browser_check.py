@@ -71,18 +71,11 @@ async def pick_tomorrow_10pm(page):
         has_text=re.compile(rf"^{tomorrow.day}$")).first.click()
     await page.keyboard.press("Escape")
     await page.wait_for_timeout(300)
-    combos = dialog.get_by_role("combobox")
-    # Start defaults to 10 AM and end to 11 AM; move each 12 hours later with
-    # the keyboard (the option list is longer than the screen).
-    for index in (0, 1):
-        await combos.nth(index).click()
-        await page.wait_for_timeout(300)
-        for _ in range(12):
-            await page.keyboard.press("ArrowDown")
-            await page.wait_for_timeout(80)
-        await page.keyboard.press("Enter")
-        await page.wait_for_timeout(300)
-    return "10:00 PM" in await combos.nth(0).inner_text() and "11:00 PM" in await combos.nth(1).inner_text()
+    # The time lists are native <select> elements (scrollable, phone pickers).
+    await page.locator("#start-time").select_option("22")
+    await page.locator("#end-time").select_option("23")
+    await page.wait_for_timeout(200)
+    return (await page.locator("#start-time").input_value()) == "22" and (await page.locator("#end-time").input_value()) == "23"
 
 
 async def main():
@@ -98,7 +91,13 @@ async def main():
         errors = []
         page.on("pageerror", lambda e: errors.append(str(e)))
         # Record the address "Get Directions" opens instead of opening it.
-        await page.add_init_script("window.__opened = []; window.open = (u) => { window.__opened.push(String(u)); return null; };")
+        await page.add_init_script("""
+            window.__opened = [];
+            window.open = (u) => {
+              if (u) window.__opened.push(String(u));
+              // A stand-in for the new tab: the app points it at the route later.
+              return { closed: false, location: { set href(v) { window.__opened.push(String(v)); }, get href() { return ""; } } };
+            };""")
 
         # ---------------------------------------------------------- sign-up
         await page.goto(U + "/spots", wait_until="networkidle")
@@ -228,9 +227,10 @@ async def main():
         await page.wait_for_url("**/spots/*", timeout=10000); await page.wait_for_timeout(1000)
         new_spot = page.url
         check("owner lists a large facility with the day price left empty", await page.get_by_text("Large facility · QR entry").count() == 1)
-        await page.get_by_role("button", name="Get Directions").click()
+        await page.get_by_role("button", name="Get Directions").click(); await page.wait_for_timeout(800)
         opened = await page.evaluate("window.__opened")
-        check("Get Directions goes to the listing's exact pin", opened[-1:] == ["https://www.google.com/maps/dir/?api=1&destination=13.0605%2C80.24&travelmode=driving"], str(opened[-1:]))
+        check("Get Directions goes from the driver's GPS position to the listing's exact pin",
+              opened[-1:] == ["https://www.google.com/maps/dir/?api=1&destination=13.0605%2C80.24&travelmode=driving&origin=13.060500%2C80.240000"], str(opened[-1:]))
 
         # ----------------------------------------------------- demo driver
         await demo(page, "Driver Priya")
@@ -253,7 +253,7 @@ async def main():
         await page.get_by_role("button", name="Open the parking assistant").click()
         box = page.get_by_label("Message to the parking assistant")
         await box.fill("spot near Rajalakshmi engineering college"); await box.press("Enter"); await page.wait_for_timeout(2000)
-        chat = page.locator("div.fixed.bottom-6")
+        chat = page.get_by_role("dialog", name="AI Parking Assistant")
         text = await chat.inner_text()
         check("assistant answers for the named place, not the driver's own position",
               "of Rajalakshmi Engineering College, Thandalam" in text and "your current location" not in text)
@@ -269,14 +269,32 @@ async def main():
         check("the assistant's link opens that spot", await page.get_by_role("heading", name="Saravana Stores Parking, T. Nagar").count() == 1)
 
         # large facility: booking, slot, QR pass, directions
-        await page.get_by_role("button", name="Get Directions").click()
+        await page.get_by_role("button", name="Get Directions").click(); await page.wait_for_timeout(800)
         opened = await page.evaluate("window.__opened")
-        check("Get Directions for a well-known place searches Google Maps for it by name",
-              opened[-1:] == ["https://www.google.com/maps/dir/?api=1&destination=Super%20Saravana%20Stores%2C%20Ranganathan%20Street%2C%20T.%20Nagar%2C%20Chennai&travelmode=driving"], str(opened[-1:]))
+        check("Get Directions for a well-known place: from the driver's position to the place by name",
+              opened[-1:] == ["https://www.google.com/maps/dir/?api=1&destination=Super+Saravana+Stores%2C+Ranganathan+Street%2C+T.+Nagar%2C+Chennai&travelmode=driving&origin=13.060500%2C80.240000"], str(opened[-1:]))
         await page.get_by_role("button", name="Book Now").click()
+        check("booking times are native lists (scroll with wheel or touch)", await page.locator("select#start-time option").count() == 24
+              and await page.locator("select#end-time option").count() == 24)
+        await page.locator("#start-time").select_option("20")
+        check("moving the start past the end moves the end along", await page.locator("#end-time").input_value() == "21")
+        await page.locator("#start-time").select_option("22")
+        await page.locator("#end-time").select_option("21")
+        await page.wait_for_timeout(500)
+        alert = page.get_by_role("alertdialog")
+        check("end before start: a 'Wrong timing selection' pop-up explains the problem",
+              await alert.get_by_text("Wrong timing selection").count() == 1 and "must be later than the start time" in await alert.inner_text())
+        await alert.get_by_role("button", name="OK, change the time").click(); await page.wait_for_timeout(300)
+        dialog_text = await page.get_by_role("dialog").inner_text()
+        check("...and no negative amount is shown", "-₹" not in dialog_text and "₹-" not in dialog_text and "Total amount\n—" in dialog_text.replace("\t", ""), "")
+        await page.get_by_placeholder("e.g. TN 09 AB 1234").fill("TN09XY4321")
+        await page.get_by_role("button", name="Proceed to Payment").click(); await page.wait_for_timeout(400)
+        check("...and Proceed shows the pop-up again instead of continuing", await page.get_by_role("alertdialog").count() == 1)
+        await page.get_by_role("alertdialog").get_by_role("button", name="OK, change the time").click(); await page.wait_for_timeout(300)
         check("booking times chosen", await pick_tomorrow_10pm(page))
-        await page.get_by_placeholder("e.g. MH 01 AB 1234").fill("TN09XY4321")
+        await page.get_by_placeholder("e.g. TN 09 AB 1234").fill("TN09XY4321")
         await page.get_by_role("button", name="Proceed to Payment").click()
+        check("demo payment mode is stated plainly", await page.get_by_text("Demo payment: no real money is charged").count() == 1)
         await page.get_by_role("button", name="Pay ₹").click()
         await page.get_by_text("Booking Confirmed!").wait_for(timeout=10000)
         check("booking a large facility keeps a numbered slot", await page.get_by_role("dialog").get_by_text("P-001").count() == 1)
@@ -287,18 +305,18 @@ async def main():
         check("the booking shows a QR entry pass with slot and pass code",
               await pass_box.locator("svg[role=img], svg:has(title)").count() >= 1 and await pass_box.get_by_text("P-001").count() == 1 and code_later.startswith("PE-"))
         await page.screenshot(path=f"{OUT}/entry_pass.png", full_page=True)
-        await page.get_by_role("button", name="Get Directions").click()
+        await page.get_by_role("button", name="Get Directions").click(); await page.wait_for_timeout(800)
         opened = await page.evaluate("window.__opened")
-        check("Get Directions on the booking page uses the same destination", "Super%20Saravana%20Stores" in opened[-1])
+        check("Get Directions on the booking page uses the same route", "Super+Saravana+Stores" in opened[-1] and "origin=13.060500%2C80.240000" in opened[-1])
         await page.goto(own_spot, wait_until="networkidle"); await page.wait_for_timeout(1200)
         check("spot page shows actual and predicted availability", await page.get_by_text("Actual · live bookings").count() == 1 and await page.get_by_text("Model prediction").count() == 1)
         check("driver sees no owner controls on a spot", await page.get_by_role("button", name="Deactivate").count() == 0 and await page.get_by_role("button", name="Edit location").count() == 0)
         check("an ordinary spot shows no QR badge", await page.get_by_text("Large facility · QR entry").count() == 0)
         own = api("GET", f"/spots/{own_spot.rsplit('/', 1)[1]}")
-        await page.get_by_role("button", name="Get Directions").click()
+        await page.get_by_role("button", name="Get Directions").click(); await page.wait_for_timeout(800)
         opened = await page.evaluate("window.__opened")
-        check("Get Directions for an ordinary spot ends at its exact map pin",
-              opened[-1] == f"https://www.google.com/maps/dir/?api=1&destination={float(own['latitude'])}%2C{float(own['longitude'])}&travelmode=driving", opened[-1])
+        check("Get Directions for an ordinary spot: driver's latitude/longitude to the spot's latitude/longitude",
+              opened[-1] == f"https://www.google.com/maps/dir/?api=1&destination={float(own['latitude'])}%2C{float(own['longitude'])}&travelmode=driving&origin=13.060500%2C80.240000", opened[-1])
         await page.goto(U + "/bookings", wait_until="networkidle"); await page.wait_for_timeout(800)
         check("My Bookings shows the driver's booking and rewards progress", await page.get_by_text("TN09XY4321").count() == 1 and await page.get_by_text("1 of 10").count() == 1)
 
@@ -318,7 +336,7 @@ async def main():
         await page.goto(own_spot, wait_until="networkidle"); await page.wait_for_timeout(1000)
         await page.get_by_role("button", name="Book Now").click()
         check("free booking: times chosen", await pick_tomorrow_10pm(page))
-        await page.get_by_placeholder("e.g. MH 01 AB 1234").fill("TN09XY4321")
+        await page.get_by_placeholder("e.g. TN 09 AB 1234").fill("TN09XY4321")
         await page.get_by_text("Use a free parking reward").click()
         check("using the reward makes the total zero", await page.get_by_role("dialog").get_by_text("₹0.00").count() == 1)
         await page.get_by_role("button", name="Confirm Free Booking").click()
@@ -397,6 +415,42 @@ async def main():
         await sign_in(page, f"tara{STAMP}@example.com")
         links = await page.get_by_role("navigation").inner_text()
         check("an account changed to owner gets the owner menu", "Verify Entry" in links and "Find Parking" not in links and page.url.endswith("/dashboard"))
+
+        # ----------------------------------------------------- phone (390 px)
+        phone = await browser.new_context(viewport={"width": 390, "height": 844}, device_scale_factor=2, is_mobile=True, has_touch=True,
+                                          geolocation={"latitude": 13.0605, "longitude": 80.24}, permissions=["geolocation"])
+        await phone.route("**/maps.googleapis.com/**", lambda r: r.abort())
+        m = await phone.new_page()
+        m.on("pageerror", lambda e: errors.append(str(e)))
+        await m.goto(U + "/login", wait_until="networkidle")
+        manifest = await m.evaluate("fetch('/manifest.webmanifest').then(r => r.json())")
+        icons_ok = await m.evaluate("Promise.all(['/icons/icon-192.png','/icons/icon-512.png','/icons/icon-maskable-512.png','/sw.js'].map(u => fetch(u).then(r => r.ok))).then(a => a.every(Boolean))")
+        check("installable: manifest with name, standalone display and icons", manifest["short_name"] == "ParkEase" and manifest["display"] == "standalone"
+              and any(i["purpose"] == "maskable" for i in manifest["icons"]) and icons_ok)
+        await m.get_by_role("button", name="Driver Priya").click(); await m.wait_for_url(U + "/"); await m.wait_for_timeout(1500)
+        reg = await m.evaluate("navigator.serviceWorker.getRegistration().then(r => !!r)")
+        check("the service worker is registered (offline start, install)", reg)
+        tabbar = m.get_by_role("navigation", name="Main")
+        check("phone: bottom tab bar with the driver's tabs", await tabbar.is_visible() and [t.strip() for t in (await tabbar.inner_text()).split("\n") if t.strip()] == ["Home", "Find", "Bookings", "Dashboard", "Profile"])
+        await tabbar.get_by_role("link", name="Bookings").click(); await m.wait_for_url(U + "/bookings")
+        check("phone: tabs navigate", await m.get_by_role("heading", name="My Bookings").count() == 1)
+        for path in ("/", "/spots", "/bookings", "/dashboard", "/profile", f"/spots/{saravana['id']}"):
+            await m.goto(U + path, wait_until="networkidle"); await m.wait_for_timeout(800)
+            width = await m.evaluate("document.documentElement.scrollWidth")
+            check(f"phone: no sideways scrolling on {path}", width <= 390, str(width))
+        await m.get_by_role("button", name="Open the parking assistant").click()
+        box = m.get_by_label("Message to the parking assistant")
+        await box.fill("parking near panagal park"); await box.press("Enter"); await m.wait_for_timeout(2000)
+        panel = await m.get_by_role("dialog", name="AI Parking Assistant").bounding_box()
+        cards = await m.locator("[role=dialog] h4").evaluate_all("els => els.map(e => { const r = e.closest('.rounded-xl, .rounded-lg').getBoundingClientRect(); return [r.left, r.right]; })")
+        check("phone: the assistant panel and its answer cards stay on screen", panel["x"] >= 0 and panel["x"] + panel["width"] <= 390
+              and all(l >= 0 and r <= 390 for l, r in cards) and len(cards) >= 1, str(panel))
+        await m.get_by_role("button", name="Close the parking assistant").click()
+        await m.get_by_role("button", name="Book Now").click(); await m.wait_for_timeout(600)
+        dbox = await m.get_by_role("dialog").bounding_box()
+        check("phone: the booking window fits the screen", dbox["x"] >= 0 and dbox["x"] + dbox["width"] <= 390 and dbox["height"] <= 844)
+        await m.screenshot(path=f"{OUT}/phone_booking.png")
+        await phone.close()
 
         # ----------------------------------- Data Science service switched off
         subprocess.run(["pkill", "-f", "[u]vicorn ml.service"]); time.sleep(1.5)

@@ -10,6 +10,7 @@ import { useAuth } from "@/context/AuthContext";
 import { DriverAnalytics } from "@/components/ds/DriverAnalytics";
 import { OwnerInsights } from "@/components/ds/OwnerInsights";
 import { RewardsCard } from "@/components/rewards/RewardsCard";
+import { EarningsCard } from "@/components/payments/EarningsCard";
 
 /**
  * Dashboard. What it shows depends on the role:
@@ -49,7 +50,12 @@ export default function Dashboard() {
           </div>
         )}
         {isAdmin && <TabsContent value="platform"><PlatformOverview /></TabsContent>}
-        {isOwner && <TabsContent value="listings"><OwnerInsights userId={user?.id} /></TabsContent>}
+        {isOwner && (
+          <TabsContent value="listings">
+            <div className="mb-6"><EarningsCard /></div>
+            <OwnerInsights userId={user?.id} />
+          </TabsContent>
+        )}
         {isDriver && (
           <TabsContent value="insights">
             <div className="mb-6"><RewardsCard /></div>

@@ -1,5 +1,5 @@
 import { db, bookingsTable, spotsTable } from "@workspace/db";
-import { and, eq, lte } from "drizzle-orm";
+import { and, eq, lt, lte } from "drizzle-orm";
 import { logger } from "./logger";
 import { sendBookingNotifications } from "./notifications";
 
@@ -66,6 +66,23 @@ export async function updateBookingStatuses() {
 }
 
 /**
+ * Releases slots held for payments that were never finished (15 minutes).
+ */
+export async function releaseUnpaidBookings() {
+  const cutoff = new Date(Date.now() - 15 * 60 * 1000);
+  try {
+    const released = await db
+      .update(bookingsTable)
+      .set({ status: "cancelled", paymentStatus: "failed", refundError: "Payment was not completed within 15 minutes." })
+      .where(and(eq(bookingsTable.status, "pending"), eq(bookingsTable.paymentStatus, "pending"), lt(bookingsTable.createdAt, cutoff)))
+      .returning({ id: bookingsTable.id });
+    if (released.length) logger.info({ count: released.length }, "Released unpaid bookings");
+  } catch (err) {
+    logger.error({ err }, "Could not release unpaid bookings");
+  }
+}
+
+/**
  * Initializes the background task to run periodically.
  */
 export function startBackgroundTasks() {
@@ -73,6 +90,7 @@ export function startBackgroundTasks() {
   
   // Messages first ("started" / "ended"), then the status change.
   const run = async (label: string) => {
+    await releaseUnpaidBookings();
     await sendBookingNotifications();
     await updateBookingStatuses().catch((err) => {
       logger.error({ err }, `${label} booking status update failed`);
