@@ -1,0 +1,8 @@
+﻿
+> @workspace/db@0.0.0 push C:\Users\Admin\Downloads\ReplitExport-Muthu-07\Park-India\lib\db
+> drizzle-kit push --config ./drizzle.config.ts
+
+Reading config file 'C:\Users\Admin\Downloads\ReplitExport-Muthu-07\Park-India\lib\db\drizzle.config.ts'
+Error  No schema files found for path config ['C:\Users\Admin\Downloads\ReplitExport-Muthu-07\Park-India\lib\db\src\schema\index.ts']
+Error  If path represents a file - please make sure to use .ts or other extension in the path
+ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.

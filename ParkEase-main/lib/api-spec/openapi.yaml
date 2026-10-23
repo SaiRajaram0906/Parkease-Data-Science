@@ -1,0 +1,776 @@
+openapi: 3.1.0
+info:
+  title: Api
+  version: 0.1.0
+  description: ParkEase India API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: spots
+    description: Parking spot operations
+  - name: bookings
+    description: Booking operations
+  - name: users
+    description: User operations
+  - name: reviews
+    description: Review operations
+  - name: dashboard
+    description: Dashboard and analytics
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  /spots:
+    get:
+      operationId: listSpots
+      tags: [spots]
+      summary: List parking spots
+      parameters:
+        - name: city
+          in: query
+          schema:
+            type: string
+        - name: vehicleType
+          in: query
+          schema:
+            type: string
+        - name: available
+          in: query
+          schema:
+            type: string
+        - name: maxPrice
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of parking spots
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ParkingSpot"
+    post:
+      operationId: createSpot
+      tags: [spots]
+      summary: Create a new parking spot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateSpotBody"
+      responses:
+        "201":
+          description: Created spot
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ParkingSpot"
+
+  /spots/{id}:
+    get:
+      operationId: getSpot
+      tags: [spots]
+      summary: Get a parking spot by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Parking spot
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ParkingSpot"
+        "404":
+          description: Not found
+    patch:
+      operationId: updateSpot
+      tags: [spots]
+      summary: Update a parking spot
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateSpotBody"
+      responses:
+        "200":
+          description: Updated spot
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ParkingSpot"
+        "404":
+          description: Not found
+    delete:
+      operationId: deleteSpot
+      tags: [spots]
+      summary: Delete a parking spot
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  /spots/{id}/reviews:
+    get:
+      operationId: getSpotReviews
+      tags: [reviews]
+      summary: Get reviews for a spot
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of reviews
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+
+  /bookings:
+    get:
+      operationId: listBookings
+      tags: [bookings]
+      summary: List bookings (optionally filter by userId or spotId)
+      parameters:
+        - name: userId
+          in: query
+          schema:
+            type: string
+        - name: spotId
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of bookings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Booking"
+    post:
+      operationId: createBooking
+      tags: [bookings]
+      summary: Create a booking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateBookingBody"
+      responses:
+        "201":
+          description: Created booking
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Booking"
+
+  /bookings/{id}:
+    get:
+      operationId: getBooking
+      tags: [bookings]
+      summary: Get booking by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Booking
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Booking"
+        "404":
+          description: Not found
+    patch:
+      operationId: updateBooking
+      tags: [bookings]
+      summary: Update a booking (cancel, confirm, etc.)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateBookingBody"
+      responses:
+        "200":
+          description: Updated booking
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Booking"
+        "404":
+          description: Not found
+
+  /users:
+    get:
+      operationId: listUsers
+      tags: [users]
+      summary: List users
+      responses:
+        "200":
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+    post:
+      operationId: createUser
+      tags: [users]
+      summary: Create or upsert a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateUserBody"
+      responses:
+        "201":
+          description: Created user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+
+  /users/{id}:
+    get:
+      operationId: getUser
+      tags: [users]
+      summary: Get user by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: User
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "404":
+          description: Not found
+    patch:
+      operationId: updateUser
+      tags: [users]
+      summary: Update user profile
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateUserBody"
+      responses:
+        "200":
+          description: Updated user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+
+  /reviews:
+    post:
+      operationId: createReview
+      tags: [reviews]
+      summary: Submit a review for a parking spot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateReviewBody"
+      responses:
+        "201":
+          description: Created review
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+
+  /dashboard/stats:
+    get:
+      operationId: getDashboardStats
+      tags: [dashboard]
+      summary: Get overall dashboard statistics
+      responses:
+        "200":
+          description: Dashboard statistics
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardStats"
+
+  /dashboard/recent-bookings:
+    get:
+      operationId: getRecentBookings
+      tags: [dashboard]
+      summary: Get recent bookings for dashboard
+      responses:
+        "200":
+          description: Recent bookings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Booking"
+
+  /dashboard/city-breakdown:
+    get:
+      operationId: getCityBreakdown
+      tags: [dashboard]
+      summary: Get booking counts and revenue per city
+      responses:
+        "200":
+          description: City breakdown
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CityBreakdown"
+
+  /dashboard/top-spots:
+    get:
+      operationId: getTopSpots
+      tags: [dashboard]
+      summary: Get top-rated and most booked parking spots
+      responses:
+        "200":
+          description: Top spots
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ParkingSpot"
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+
+    ParkingSpot:
+      type: object
+      properties:
+        id:
+          type: integer
+        ownerId:
+          type: ["integer", "null"]
+        name:
+          type: string
+        description:
+          type: ["string", "null"]
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        latitude:
+          type: ["string", "null"]
+        longitude:
+          type: ["string", "null"]
+        pricePerHour:
+          type: string
+        pricePerDay:
+          type: ["string", "null"]
+        vehicleType:
+          type: string
+        totalSlots:
+          type: integer
+        availableSlots:
+          type: integer
+        amenities:
+          type: ["string", "null"]
+        imageUrl:
+          type: ["string", "null"]
+        rating:
+          type: ["string", "null"]
+        totalReviews:
+          type: integer
+        isActive:
+          type: boolean
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+        - id
+        - name
+        - address
+        - city
+        - state
+        - pricePerHour
+        - vehicleType
+        - totalSlots
+        - availableSlots
+        - totalReviews
+        - isActive
+        - createdAt
+        - updatedAt
+
+    CreateSpotBody:
+      type: object
+      properties:
+        ownerId:
+          type: ["integer", "null"]
+        name:
+          type: string
+        description:
+          type: ["string", "null"]
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        latitude:
+          type: ["string", "null"]
+        longitude:
+          type: ["string", "null"]
+        pricePerHour:
+          type: string
+        pricePerDay:
+          type: ["string", "null"]
+        vehicleType:
+          type: string
+        totalSlots:
+          type: integer
+        amenities:
+          type: ["string", "null"]
+        imageUrl:
+          type: ["string", "null"]
+      required:
+        - name
+        - address
+        - city
+        - state
+        - pricePerHour
+        - vehicleType
+        - totalSlots
+
+    UpdateSpotBody:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: ["string", "null"]
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        pricePerHour:
+          type: string
+        pricePerDay:
+          type: ["string", "null"]
+        vehicleType:
+          type: string
+        totalSlots:
+          type: integer
+        availableSlots:
+          type: integer
+        amenities:
+          type: ["string", "null"]
+        imageUrl:
+          type: ["string", "null"]
+        isActive:
+          type: boolean
+
+    Booking:
+      type: object
+      properties:
+        id:
+          type: integer
+        spotId:
+          type: integer
+        userId:
+          type: ["integer", "null"]
+        spotName:
+          type: ["string", "null"]
+        userEmail:
+          type: ["string", "null"]
+        vehicleNumber:
+          type: string
+        vehicleType:
+          type: string
+        startTime:
+          type: string
+        endTime:
+          type: string
+        durationHours:
+          type: string
+        totalAmount:
+          type: string
+        status:
+          type: string
+        paymentStatus:
+          type: string
+        paymentId:
+          type: ["string", "null"]
+        notes:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+        - id
+        - spotId
+        - vehicleNumber
+        - vehicleType
+        - startTime
+        - endTime
+        - durationHours
+        - totalAmount
+        - status
+        - paymentStatus
+        - createdAt
+        - updatedAt
+
+    CreateBookingBody:
+      type: object
+      properties:
+        spotId:
+          type: integer
+        userId:
+          type: ["integer", "null"]
+        vehicleNumber:
+          type: string
+        vehicleType:
+          type: string
+        startTime:
+          type: string
+        endTime:
+          type: string
+        durationHours:
+          type: string
+        totalAmount:
+          type: string
+        notes:
+          type: ["string", "null"]
+      required:
+        - spotId
+        - vehicleNumber
+        - vehicleType
+        - startTime
+        - endTime
+        - durationHours
+        - totalAmount
+
+    UpdateBookingBody:
+      type: object
+      properties:
+        status:
+          type: string
+        paymentStatus:
+          type: string
+        paymentId:
+          type: ["string", "null"]
+        notes:
+          type: ["string", "null"]
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: ["string", "null"]
+        role:
+          type: string
+        avatarUrl:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+        - id
+        - name
+        - email
+        - role
+        - createdAt
+        - updatedAt
+
+    CreateUserBody:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: ["string", "null"]
+        role:
+          type: string
+        avatarUrl:
+          type: ["string", "null"]
+      required:
+        - name
+        - email
+        - role
+
+    UpdateUserBody:
+      type: object
+      properties:
+        name:
+          type: string
+        phone:
+          type: ["string", "null"]
+        avatarUrl:
+          type: ["string", "null"]
+
+    Review:
+      type: object
+      properties:
+        id:
+          type: integer
+        spotId:
+          type: integer
+        userId:
+          type: ["integer", "null"]
+        userName:
+          type: ["string", "null"]
+        rating:
+          type: integer
+        comment:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+      required:
+        - id
+        - spotId
+        - rating
+        - createdAt
+
+    CreateReviewBody:
+      type: object
+      properties:
+        spotId:
+          type: integer
+        userId:
+          type: ["integer", "null"]
+        userName:
+          type: ["string", "null"]
+        rating:
+          type: integer
+        comment:
+          type: ["string", "null"]
+      required:
+        - spotId
+        - rating
+
+    DashboardStats:
+      type: object
+      properties:
+        totalSpots:
+          type: integer
+        totalBookings:
+          type: integer
+        totalRevenue:
+          type: string
+        activeBookings:
+          type: integer
+        totalUsers:
+          type: integer
+        availableSpots:
+          type: integer
+      required:
+        - totalSpots
+        - totalBookings
+        - totalRevenue
+        - activeBookings
+        - totalUsers
+        - availableSpots
+
+    CityBreakdown:
+      type: object
+      properties:
+        city:
+          type: string
+        bookingCount:
+          type: integer
+        revenue:
+          type: string
+        spotCount:
+          type: integer
+      required:
+        - city
+        - bookingCount
+        - revenue
+        - spotCount

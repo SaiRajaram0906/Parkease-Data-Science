@@ -1,0 +1,14 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "aKsbq4wHJLB2QAiKO5ERN"
+uri = "file://artifacts/parkease/public/hero-bg.jpg"
+type = "image"
+title = "underground parking facility in premium Indian mall, bright lighting, luxury cars"
+
+[[outputs]]
+id = "Uc59miqa-prVyoirE4A7-"
+uri = "file://artifacts/parkease/public/spot-placeholder.jpg"
+type = "image"
+title = "parking spot inside building in india"

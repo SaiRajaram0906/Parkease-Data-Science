@@ -1,0 +1,6726 @@
+{
+ "synthetic_data": true,
+ "notice": "Synthetic dataset. These are findings about generated data, not real-world parking statistics.",
+ "totals": {
+  "users": 1800,
+  "drivers": 1500,
+  "owners": 300,
+  "listings": 500,
+  "active_listings": 458,
+  "bookings": 42378,
+  "completed_revenue": 3980811.5,
+  "avg_occupancy": 54.0,
+  "cancellation_rate": 10.6,
+  "date_from": "2025-10-01",
+  "date_to": "2026-09-30"
+ },
+ "summary_statistics": [
+  {
+   "column": "occupancy_rate",
+   "label": "Occupancy rate (%)",
+   "count": 42378,
+   "mean": 54.01,
+   "median": 60.0,
+   "std": 26.91,
+   "min": 0.0,
+   "q1": 33.33,
+   "q3": 75.0,
+   "max": 90.0,
+   "skew": -0.67
+  },
+  {
+   "column": "booking_duration_hours",
+   "label": "Booking duration (h)",
+   "count": 42378,
+   "mean": 2.38,
+   "median": 2.0,
+   "std": 1.56,
+   "min": 0.5,
+   "q1": 1.0,
+   "q3": 3.0,
+   "max": 12.0,
+   "skew": 1.25
+  },
+  {
+   "column": "price_per_hour",
+   "label": "Price per hour (\u20b9)",
+   "count": 42378,
+   "mean": 44.36,
+   "median": 41.0,
+   "std": 24.69,
+   "min": 8.0,
+   "q1": 24.0,
+   "q3": 62.0,
+   "max": 155.0,
+   "skew": 0.62
+  },
+  {
+   "column": "total_amount",
+   "label": "Booking amount (\u20b9)",
+   "count": 42378,
+   "mean": 107.63,
+   "median": 75.0,
+   "std": 101.24,
+   "min": 4.0,
+   "q1": 37.5,
+   "q3": 144.0,
+   "max": 1224.0,
+   "skew": 2.08
+  },
+  {
+   "column": "distance_km",
+   "label": "Distance to slot (km)",
+   "count": 42378,
+   "mean": 0.98,
+   "median": 0.79,
+   "std": 0.75,
+   "min": 0.1,
+   "q1": 0.53,
+   "q3": 1.2,
+   "max": 8.48,
+   "skew": 3.23
+  },
+  {
+   "column": "available_slots",
+   "label": "Free spaces seen",
+   "count": 42378,
+   "mean": 2.23,
+   "median": 2.0,
+   "std": 1.61,
+   "min": 1.0,
+   "q1": 1.0,
+   "q3": 3.0,
+   "max": 10.0,
+   "skew": 1.52
+  }
+ ],
+ "bookings_by_hour": [
+  {
+   "hour": 6,
+   "label": "06:00",
+   "weekday": 2.1,
+   "weekend": 1.11,
+   "weekday_occupancy": 35.35,
+   "weekend_occupancy": 27.67
+  },
+  {
+   "hour": 7,
+   "label": "07:00",
+   "weekday": 4.72,
+   "weekend": 1.92,
+   "weekday_occupancy": 46.46,
+   "weekend_occupancy": 33.15
+  },
+  {
+   "hour": 8,
+   "label": "08:00",
+   "weekday": 10.45,
+   "weekend": 3.35,
+   "weekday_occupancy": 64.55,
+   "weekend_occupancy": 37.34
+  },
+  {
+   "hour": 9,
+   "label": "09:00",
+   "weekday": 11.72,
+   "weekend": 4.86,
+   "weekday_occupancy": 65.83,
+   "weekend_occupancy": 41.09
+  },
+  {
+   "hour": 10,
+   "label": "10:00",
+   "weekday": 8.81,
+   "weekend": 6.51,
+   "weekday_occupancy": 57.68,
+   "weekend_occupancy": 46.9
+  },
+  {
+   "hour": 11,
+   "label": "11:00",
+   "weekday": 5.8,
+   "weekend": 7.36,
+   "weekday_occupancy": 46.53,
+   "weekend_occupancy": 50.68
+  },
+  {
+   "hour": 12,
+   "label": "12:00",
+   "weekday": 5.24,
+   "weekend": 7.18,
+   "weekday_occupancy": 45.08,
+   "weekend_occupancy": 54.39
+  },
+  {
+   "hour": 13,
+   "label": "13:00",
+   "weekday": 5.3,
+   "weekend": 7.41,
+   "weekday_occupancy": 45.29,
+   "weekend_occupancy": 55.58
+  },
+  {
+   "hour": 14,
+   "label": "14:00",
+   "weekday": 5.24,
+   "weekend": 6.92,
+   "weekday_occupancy": 43.86,
+   "weekend_occupancy": 53.09
+  },
+  {
+   "hour": 15,
+   "label": "15:00",
+   "weekday": 5.0,
+   "weekend": 7.33,
+   "weekday_occupancy": 42.91,
+   "weekend_occupancy": 53.71
+  },
+  {
+   "hour": 16,
+   "label": "16:00",
+   "weekday": 6.1,
+   "weekend": 7.62,
+   "weekday_occupancy": 47.36,
+   "weekend_occupancy": 53.74
+  },
+  {
+   "hour": 17,
+   "label": "17:00",
+   "weekday": 10.49,
+   "weekend": 8.32,
+   "weekday_occupancy": 60.02,
+   "weekend_occupancy": 57.94
+  },
+  {
+   "hour": 18,
+   "label": "18:00",
+   "weekday": 12.53,
+   "weekend": 8.75,
+   "weekday_occupancy": 65.42,
+   "weekend_occupancy": 59.76
+  },
+  {
+   "hour": 19,
+   "label": "19:00",
+   "weekday": 11.22,
+   "weekend": 8.25,
+   "weekday_occupancy": 62.12,
+   "weekend_occupancy": 59.02
+  },
+  {
+   "hour": 20,
+   "label": "20:00",
+   "weekday": 8.04,
+   "weekend": 6.61,
+   "weekday_occupancy": 55.49,
+   "weekend_occupancy": 56.47
+  },
+  {
+   "hour": 21,
+   "label": "21:00",
+   "weekday": 4.79,
+   "weekend": 4.86,
+   "weekday_occupancy": 47.38,
+   "weekend_occupancy": 48.7
+  },
+  {
+   "hour": 22,
+   "label": "22:00",
+   "weekday": 3.15,
+   "weekend": 3.23,
+   "weekday_occupancy": 38.18,
+   "weekend_occupancy": 37.65
+  },
+  {
+   "hour": 23,
+   "label": "23:00",
+   "weekday": 1.56,
+   "weekend": 1.64,
+   "weekday_occupancy": 30.85,
+   "weekend_occupancy": 29.06
+  }
+ ],
+ "bookings_by_day_of_week": [
+  {
+   "day": "Monday",
+   "short": "Mon",
+   "bookings": 6116,
+   "per_day": 117.6
+  },
+  {
+   "day": "Tuesday",
+   "short": "Tue",
+   "bookings": 6261,
+   "per_day": 120.4
+  },
+  {
+   "day": "Wednesday",
+   "short": "Wed",
+   "bookings": 6368,
+   "per_day": 120.2
+  },
+  {
+   "day": "Thursday",
+   "short": "Thu",
+   "bookings": 6145,
+   "per_day": 118.2
+  },
+  {
+   "day": "Friday",
+   "short": "Fri",
+   "bookings": 6661,
+   "per_day": 128.1
+  },
+  {
+   "day": "Saturday",
+   "short": "Sat",
+   "bookings": 5901,
+   "per_day": 113.5
+  },
+  {
+   "day": "Sunday",
+   "short": "Sun",
+   "bookings": 4926,
+   "per_day": 94.7
+  }
+ ],
+ "monthly_trend": [
+  {
+   "month": "2025-10",
+   "label": "Oct 25",
+   "bookings": 2938,
+   "completed_revenue": 271131.0,
+   "active_drivers": 732
+  },
+  {
+   "month": "2025-11",
+   "label": "Nov 25",
+   "bookings": 2756,
+   "completed_revenue": 247754.5,
+   "active_drivers": 751
+  },
+  {
+   "month": "2025-12",
+   "label": "Dec 25",
+   "bookings": 3363,
+   "completed_revenue": 325459.0,
+   "active_drivers": 833
+  },
+  {
+   "month": "2026-01",
+   "label": "Jan 26",
+   "bookings": 3252,
+   "completed_revenue": 312298.5,
+   "active_drivers": 871
+  },
+  {
+   "month": "2026-02",
+   "label": "Feb 26",
+   "bookings": 3170,
+   "completed_revenue": 299253.0,
+   "active_drivers": 899
+  },
+  {
+   "month": "2026-03",
+   "label": "Mar 26",
+   "bookings": 3634,
+   "completed_revenue": 353041.0,
+   "active_drivers": 959
+  },
+  {
+   "month": "2026-04",
+   "label": "Apr 26",
+   "bookings": 3584,
+   "completed_revenue": 344374.5,
+   "active_drivers": 994
+  },
+  {
+   "month": "2026-05",
+   "label": "May 26",
+   "bookings": 3318,
+   "completed_revenue": 316803.5,
+   "active_drivers": 1003
+  },
+  {
+   "month": "2026-06",
+   "label": "Jun 26",
+   "bookings": 3692,
+   "completed_revenue": 359898.0,
+   "active_drivers": 1076
+  },
+  {
+   "month": "2026-07",
+   "label": "Jul 26",
+   "bookings": 4095,
+   "completed_revenue": 394136.0,
+   "active_drivers": 1155
+  },
+  {
+   "month": "2026-08",
+   "label": "Aug 26",
+   "bookings": 4282,
+   "completed_revenue": 400425.0,
+   "active_drivers": 1209
+  },
+  {
+   "month": "2026-09",
+   "label": "Sep 26",
+   "bookings": 4294,
+   "completed_revenue": 356237.5,
+   "active_drivers": 1216
+  }
+ ],
+ "zones": [
+  {
+   "zone": "Zone A",
+   "bookings": 7545,
+   "listings": 78,
+   "occupancy": 52.1,
+   "avg_price": 68.0,
+   "avg_duration": 2.59,
+   "avg_distance": 0.81,
+   "high_demand_share": 29.2,
+   "cancellation_rate": 9.8,
+   "completed_revenue": 1166434.0
+  },
+  {
+   "zone": "Zone B",
+   "bookings": 7273,
+   "listings": 70,
+   "occupancy": 57.8,
+   "avg_price": 46.7,
+   "avg_duration": 2.57,
+   "avg_distance": 1.07,
+   "high_demand_share": 24.6,
+   "cancellation_rate": 11.0,
+   "completed_revenue": 760542.5
+  },
+  {
+   "zone": "Zone C",
+   "bookings": 10636,
+   "listings": 83,
+   "occupancy": 60.8,
+   "avg_price": 52.2,
+   "avg_duration": 2.3,
+   "avg_distance": 0.93,
+   "high_demand_share": 37.9,
+   "cancellation_rate": 11.8,
+   "completed_revenue": 1106407.0
+  },
+  {
+   "zone": "Zone D",
+   "bookings": 6878,
+   "listings": 60,
+   "occupancy": 56.4,
+   "avg_price": 37.1,
+   "avg_duration": 2.47,
+   "avg_distance": 0.97,
+   "high_demand_share": 19.7,
+   "cancellation_rate": 10.2,
+   "completed_revenue": 551695.5
+  },
+  {
+   "zone": "Zone E",
+   "bookings": 2399,
+   "listings": 46,
+   "occupancy": 48.8,
+   "avg_price": 18.5,
+   "avg_duration": 2.62,
+   "avg_distance": 1.11,
+   "high_demand_share": 13.2,
+   "cancellation_rate": 9.5,
+   "completed_revenue": 103654.5
+  },
+  {
+   "zone": "Zone F",
+   "bookings": 3036,
+   "listings": 57,
+   "occupancy": 41.9,
+   "avg_price": 32.4,
+   "avg_duration": 1.69,
+   "avg_distance": 0.86,
+   "high_demand_share": 4.9,
+   "cancellation_rate": 7.7,
+   "completed_revenue": 149635.5
+  },
+  {
+   "zone": "Zone G",
+   "bookings": 2976,
+   "listings": 60,
+   "occupancy": 43.6,
+   "avg_price": 17.8,
+   "avg_duration": 2.17,
+   "avg_distance": 1.23,
+   "high_demand_share": 8.3,
+   "cancellation_rate": 9.2,
+   "completed_revenue": 102301.5
+  },
+  {
+   "zone": "Zone H",
+   "bookings": 1635,
+   "listings": 46,
+   "occupancy": 40.9,
+   "avg_price": 13.2,
+   "avg_duration": 2.17,
+   "avg_distance": 1.35,
+   "high_demand_share": 4.0,
+   "cancellation_rate": 12.7,
+   "completed_revenue": 40141.0
+  }
+ ],
+ "demand_distribution": [
+  {
+   "level": "Low",
+   "bookings": 13384,
+   "share": 31.6,
+   "occupancy": 32.7,
+   "avg_price": 35.2,
+   "price_vs_base": 0.954,
+   "avg_distance": 0.92,
+   "cancellation_rate": 6.6
+  },
+  {
+   "level": "Medium",
+   "bookings": 18361,
+   "share": 43.3,
+   "occupancy": 59.1,
+   "avg_price": 44.6,
+   "price_vs_base": 1.037,
+   "avg_distance": 0.96,
+   "cancellation_rate": 9.8
+  },
+  {
+   "level": "High",
+   "bookings": 10003,
+   "share": 23.6,
+   "occupancy": 73.2,
+   "avg_price": 56.1,
+   "price_vs_base": 1.156,
+   "avg_distance": 1.11,
+   "cancellation_rate": 17.0
+  },
+  {
+   "level": "Unknown",
+   "bookings": 630,
+   "share": 1.5
+  }
+ ],
+ "price_vs_demand": {
+  "points": [
+   {
+    "base_price": 15,
+    "price": 16.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 25,
+    "price": 22.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 65,
+    "price": 65.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 25,
+    "price": 31.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 25,
+    "price": 24.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 95,
+    "price": 96.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 15,
+    "price": 15.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 15,
+    "price": 15.0,
+    "level": "Low",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 80,
+    "price": 75.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 40,
+    "price": 41.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "Low",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 45,
+    "price": 45.0,
+    "level": "Low",
+    "occupancy": 12.0
+   },
+   {
+    "base_price": 35,
+    "price": 29.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 30,
+    "price": 26.0,
+    "level": "Low",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 25,
+    "price": 21.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 55,
+    "price": 52.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 90,
+    "price": 82.0,
+    "level": "Low",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 15,
+    "price": 14.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 15,
+    "price": 14.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 40,
+    "price": 31.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 50,
+    "price": 46.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 35,
+    "price": 34.0,
+    "level": "Low",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 15,
+    "price": 14.0,
+    "level": "Low",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 75,
+    "price": 69.0,
+    "level": "Low",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 35,
+    "price": 31.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 60,
+    "price": 59.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 25,
+    "price": 22.0,
+    "level": "Low",
+    "occupancy": 20.0
+   },
+   {
+    "base_price": 30,
+    "price": 30.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 35,
+    "price": 33.0,
+    "level": "Low",
+    "occupancy": 20.0
+   },
+   {
+    "base_price": 15,
+    "price": 15.0,
+    "level": "Low",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 95,
+    "price": 84.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 15,
+    "price": 13.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 25,
+    "price": 27.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 60,
+    "price": 57.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 50,
+    "price": 47.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 15,
+    "price": 16.0,
+    "level": "Low",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 90,
+    "price": 91.0,
+    "level": "Low",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 45,
+    "price": 42.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 85,
+    "price": 84.0,
+    "level": "Low",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 70,
+    "price": 62.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 25,
+    "price": 28.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 20,
+    "price": 22.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 40,
+    "price": 38.0,
+    "level": "Low",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 60,
+    "price": 63.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 35,
+    "price": 44.0,
+    "level": "Low",
+    "occupancy": 10.0
+   },
+   {
+    "base_price": 20,
+    "price": 17.0,
+    "level": "Low",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 15,
+    "price": 14.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 40,
+    "price": 40.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 20,
+    "price": 16.0,
+    "level": "Low",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 50,
+    "price": 50.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 30,
+    "price": 29.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 40,
+    "price": 41.0,
+    "level": "Low",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 50,
+    "price": 50.0,
+    "level": "Low",
+    "occupancy": 38.0
+   },
+   {
+    "base_price": 20,
+    "price": 16.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 45,
+    "price": 47.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Low",
+    "occupancy": 12.0
+   },
+   {
+    "base_price": 25,
+    "price": 24.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 65,
+    "price": 63.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 10,
+    "price": 8.0,
+    "level": "Low",
+    "occupancy": 20.0
+   },
+   {
+    "base_price": 20,
+    "price": 20.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 100,
+    "price": 108.0,
+    "level": "Low",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 80,
+    "price": 82.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Low",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 10,
+    "price": 9.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Low",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 25,
+    "price": 24.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 60,
+    "price": 59.0,
+    "level": "Low",
+    "occupancy": 20.0
+   },
+   {
+    "base_price": 25,
+    "price": 21.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 55,
+    "price": 47.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 25,
+    "price": 23.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 10,
+    "price": 9.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 35,
+    "price": 31.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 10,
+    "price": 13.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 65,
+    "price": 59.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 55,
+    "price": 51.0,
+    "level": "Low",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 15,
+    "price": 15.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Low",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 20.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 65,
+    "price": 69.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 35,
+    "price": 34.0,
+    "level": "Low",
+    "occupancy": 20.0
+   },
+   {
+    "base_price": 20,
+    "price": 20.0,
+    "level": "Low",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 100,
+    "price": 89.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 70,
+    "price": 76.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 60,
+    "price": 55.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 65,
+    "price": 61.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 35,
+    "price": 32.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 55,
+    "price": 52.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 65,
+    "price": 65.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 15,
+    "price": 15.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 30,
+    "price": 29.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 70,
+    "price": 63.0,
+    "level": "Low",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 35,
+    "price": 38.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 25,
+    "price": 25.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 15,
+    "price": 14.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 25,
+    "price": 23.0,
+    "level": "Low",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 35,
+    "price": 38.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 65,
+    "price": 57.0,
+    "level": "Low",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 15,
+    "price": 14.0,
+    "level": "Low",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 80,
+    "price": 76.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 20,
+    "price": 17.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Low",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 65,
+    "price": 60.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 15,
+    "price": 15.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 20,
+    "price": 20.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 70,
+    "price": 64.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 60,
+    "price": 57.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 65,
+    "price": 63.0,
+    "level": "Low",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 50,
+    "price": 47.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 45,
+    "price": 37.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 25,
+    "price": 24.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 40,
+    "price": 34.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 50,
+    "price": 44.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 10,
+    "price": 11.0,
+    "level": "Low",
+    "occupancy": 20.0
+   },
+   {
+    "base_price": 60,
+    "price": 60.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 75,
+    "price": 70.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 75,
+    "price": 74.0,
+    "level": "Low",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 50,
+    "price": 51.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 25,
+    "price": 22.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 15,
+    "price": 15.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 40,
+    "price": 34.0,
+    "level": "Low",
+    "occupancy": 12.0
+   },
+   {
+    "base_price": 55,
+    "price": 57.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 25,
+    "price": 25.0,
+    "level": "Low",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 35,
+    "price": 30.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 20,
+    "price": 23.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 55,
+    "price": 61.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 40,
+    "price": 39.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 30,
+    "price": 28.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 30,
+    "price": 27.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 50,
+    "price": 49.0,
+    "level": "Low",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 20,
+    "price": 18.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 30,
+    "price": 30.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 35,
+    "price": 29.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 15,
+    "price": 14.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 40,
+    "price": 35.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 15,
+    "price": 15.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 50,
+    "price": 48.0,
+    "level": "Low",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 35,
+    "price": 33.0,
+    "level": "Low",
+    "occupancy": 38.0
+   },
+   {
+    "base_price": 15,
+    "price": 13.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 55,
+    "price": 49.0,
+    "level": "Low",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 80,
+    "price": 70.0,
+    "level": "Low",
+    "occupancy": 38.0
+   },
+   {
+    "base_price": 15,
+    "price": 15.0,
+    "level": "Low",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 35,
+    "price": 34.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 30,
+    "price": 30.0,
+    "level": "Low",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 65,
+    "price": 58.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 50,
+    "price": 48.0,
+    "level": "Low",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 25,
+    "price": 22.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 35,
+    "price": 34.0,
+    "level": "Low",
+    "occupancy": 20.0
+   },
+   {
+    "base_price": 30,
+    "price": 27.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 40,
+    "price": 34.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Low",
+    "occupancy": 12.0
+   },
+   {
+    "base_price": 55,
+    "price": 48.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 70,
+    "price": 58.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 25,
+    "price": 23.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 60,
+    "price": 67.0,
+    "level": "Low",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 45,
+    "price": 44.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 15,
+    "price": 11.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Low",
+    "occupancy": 20.0
+   },
+   {
+    "base_price": 40,
+    "price": 35.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 55,
+    "price": 56.0,
+    "level": "Low",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 40,
+    "price": 40.0,
+    "level": "Low",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 30,
+    "price": 27.0,
+    "level": "Low",
+    "occupancy": 20.0
+   },
+   {
+    "base_price": 35,
+    "price": 31.0,
+    "level": "Low",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 20,
+    "price": 17.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 65,
+    "price": 62.0,
+    "level": "Low",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 15,
+    "price": 14.0,
+    "level": "Low",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 25,
+    "price": 23.0,
+    "level": "Low",
+    "occupancy": 38.0
+   },
+   {
+    "base_price": 100,
+    "price": 91.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 10,
+    "price": 9.0,
+    "level": "Low",
+    "occupancy": 38.0
+   },
+   {
+    "base_price": 65,
+    "price": 62.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 15,
+    "price": 16.0,
+    "level": "Low",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 20,
+    "price": 20.0,
+    "level": "Low",
+    "occupancy": 12.0
+   },
+   {
+    "base_price": 25,
+    "price": 22.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 50,
+    "price": 48.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 20,
+    "price": 24.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 10,
+    "price": 9.0,
+    "level": "Low",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 30,
+    "price": 31.0,
+    "level": "Low",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 35,
+    "price": 35.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 70,
+    "price": 65.0,
+    "level": "Low",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 35,
+    "price": 33.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Low",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 20,
+    "price": 18.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 70,
+    "price": 72.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 25,
+    "price": 24.0,
+    "level": "Low",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 55,
+    "price": 52.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 10,
+    "price": 9.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 25,
+    "price": 22.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 45,
+    "price": 46.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 25,
+    "price": 25.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 55,
+    "price": 54.0,
+    "level": "Low",
+    "occupancy": 10.0
+   },
+   {
+    "base_price": 55,
+    "price": 48.0,
+    "level": "Low",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 15,
+    "price": 15.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 15,
+    "price": 14.0,
+    "level": "Low",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 70,
+    "price": 65.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 55,
+    "price": 48.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 55,
+    "price": 50.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 35,
+    "price": 36.0,
+    "level": "Low",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 90,
+    "price": 87.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 15,
+    "price": 14.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 80,
+    "price": 70.0,
+    "level": "Low",
+    "occupancy": 38.0
+   },
+   {
+    "base_price": 30,
+    "price": 30.0,
+    "level": "Low",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 25,
+    "price": 23.0,
+    "level": "Low",
+    "occupancy": 20.0
+   },
+   {
+    "base_price": 85,
+    "price": 90.0,
+    "level": "Low",
+    "occupancy": 38.0
+   },
+   {
+    "base_price": 50,
+    "price": 42.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 15,
+    "price": 14.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 70,
+    "price": 56.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 45,
+    "price": 44.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 15,
+    "price": 14.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 30,
+    "price": 24.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 20,
+    "price": 18.0,
+    "level": "Low",
+    "occupancy": 12.0
+   },
+   {
+    "base_price": 10,
+    "price": 9.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 40,
+    "price": 40.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 25,
+    "price": 24.0,
+    "level": "Low",
+    "occupancy": 10.0
+   },
+   {
+    "base_price": 10,
+    "price": 9.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 60,
+    "price": 61.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 65,
+    "price": 58.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 50,
+    "price": 43.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 45,
+    "price": 46.0,
+    "level": "Low",
+    "occupancy": 38.0
+   },
+   {
+    "base_price": 65,
+    "price": 64.0,
+    "level": "Low",
+    "occupancy": 20.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Low",
+    "occupancy": 20.0
+   },
+   {
+    "base_price": 50,
+    "price": 47.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 15,
+    "price": 13.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 35,
+    "price": 34.0,
+    "level": "Low",
+    "occupancy": 38.0
+   },
+   {
+    "base_price": 55,
+    "price": 57.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 25,
+    "price": 21.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 100,
+    "price": 94.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 25,
+    "price": 25.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 30,
+    "price": 28.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 15,
+    "price": 13.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 45,
+    "price": 43.0,
+    "level": "Low",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 35,
+    "price": 36.0,
+    "level": "Low",
+    "occupancy": 38.0
+   },
+   {
+    "base_price": 95,
+    "price": 89.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 90,
+    "price": 84.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 25,
+    "price": 24.0,
+    "level": "Low",
+    "occupancy": 30.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 75,
+    "price": 74.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 65,
+    "price": 63.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 25,
+    "price": 24.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 10,
+    "price": 9.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 15,
+    "price": 13.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 10,
+    "price": 9.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 30,
+    "price": 28.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 65,
+    "price": 60.0,
+    "level": "Low",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 30,
+    "price": 31.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 10,
+    "price": 8.0,
+    "level": "Low",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 85,
+    "price": 74.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 50,
+    "price": 43.0,
+    "level": "Low",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 20,
+    "price": 18.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 15,
+    "price": 13.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 25,
+    "price": 22.0,
+    "level": "Low",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 65,
+    "price": 69.0,
+    "level": "Low",
+    "occupancy": 30.0
+   },
+   {
+    "base_price": 50,
+    "price": 44.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 15,
+    "price": 13.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 35,
+    "price": 33.0,
+    "level": "Low",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 40,
+    "price": 38.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 55,
+    "price": 55.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 25,
+    "price": 28.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 65,
+    "price": 57.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 15,
+    "price": 13.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 45,
+    "price": 46.0,
+    "level": "Low",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 35,
+    "price": 30.0,
+    "level": "Low",
+    "occupancy": 12.0
+   },
+   {
+    "base_price": 30,
+    "price": 28.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 30,
+    "price": 32.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 20,
+    "price": 18.0,
+    "level": "Low",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 15,
+    "price": 14.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 45,
+    "price": 37.0,
+    "level": "Low",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 55,
+    "price": 55.0,
+    "level": "Low",
+    "occupancy": 20.0
+   },
+   {
+    "base_price": 45,
+    "price": 46.0,
+    "level": "Low",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 45,
+    "price": 40.0,
+    "level": "Low",
+    "occupancy": 12.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "Low",
+    "occupancy": 10.0
+   },
+   {
+    "base_price": 25,
+    "price": 26.0,
+    "level": "Low",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 25,
+    "price": 24.0,
+    "level": "Low",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 25,
+    "price": 26.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Low",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Low",
+    "occupancy": 20.0
+   },
+   {
+    "base_price": 40,
+    "price": 38.0,
+    "level": "Low",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 30,
+    "price": 30.0,
+    "level": "Low",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 65,
+    "price": 63.0,
+    "level": "Low",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 15,
+    "price": 15.0,
+    "level": "Low",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 25,
+    "price": 24.0,
+    "level": "Low",
+    "occupancy": 20.0
+   },
+   {
+    "base_price": 70,
+    "price": 73.0,
+    "level": "Medium",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 25,
+    "price": 25.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 45,
+    "price": 45.0,
+    "level": "Medium",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 30,
+    "price": 34.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 65,
+    "price": 58.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 25,
+    "price": 25.0,
+    "level": "Medium",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 60,
+    "price": 60.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 65,
+    "price": 61.0,
+    "level": "Medium",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 65,
+    "price": 75.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 40,
+    "price": 42.0,
+    "level": "Medium",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 25,
+    "price": 23.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "Medium",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 85,
+    "price": 95.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 45,
+    "price": 49.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 45,
+    "price": 48.0,
+    "level": "Medium",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 50,
+    "price": 50.0,
+    "level": "Medium",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 60,
+    "price": 60.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 45,
+    "price": 44.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 30,
+    "price": 31.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 65,
+    "price": 73.0,
+    "level": "Medium",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 20,
+    "price": 20.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 40,
+    "price": 46.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 40,
+    "price": 43.0,
+    "level": "Medium",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 70,
+    "price": 68.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 70,
+    "price": 67.0,
+    "level": "Medium",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 80,
+    "price": 79.0,
+    "level": "Medium",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 30,
+    "price": 25.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 85,
+    "price": 90.0,
+    "level": "Medium",
+    "occupancy": 38.0
+   },
+   {
+    "base_price": 45,
+    "price": 43.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 65,
+    "price": 65.0,
+    "level": "Medium",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 30,
+    "price": 31.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 25,
+    "price": 23.0,
+    "level": "Medium",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 50,
+    "price": 50.0,
+    "level": "Medium",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 30,
+    "price": 31.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 85,
+    "price": 95.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 55,
+    "price": 53.0,
+    "level": "Medium",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 70,
+    "price": 78.0,
+    "level": "Medium",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 60,
+    "price": 64.0,
+    "level": "Medium",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 75,
+    "price": 79.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 30,
+    "price": 30.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 23.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 35,
+    "price": 38.0,
+    "level": "Medium",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 40,
+    "price": 41.0,
+    "level": "Medium",
+    "occupancy": 38.0
+   },
+   {
+    "base_price": 10,
+    "price": 9.0,
+    "level": "Medium",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 45,
+    "price": 40.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "Medium",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 35,
+    "price": 33.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 55,
+    "price": 55.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 40,
+    "price": 41.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 65,
+    "price": 64.0,
+    "level": "Medium",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 15,
+    "price": 16.0,
+    "level": "Medium",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 20,
+    "price": 20.0,
+    "level": "Medium",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 20,
+    "price": 20.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 60,
+    "price": 69.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 25,
+    "price": 25.0,
+    "level": "Medium",
+    "occupancy": 70.0
+   },
+   {
+    "base_price": 45,
+    "price": 46.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 65,
+    "price": 65.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 25,
+    "price": 27.0,
+    "level": "Medium",
+    "occupancy": 70.0
+   },
+   {
+    "base_price": 75,
+    "price": 70.0,
+    "level": "Medium",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 40,
+    "price": 41.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 55,
+    "price": 57.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 35,
+    "price": 37.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 30,
+    "price": 31.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 55,
+    "price": 53.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 55,
+    "price": 56.0,
+    "level": "Medium",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 25,
+    "price": 23.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 50,
+    "price": 47.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 65,
+    "price": 62.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 25,
+    "price": 27.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 20,
+    "price": 23.0,
+    "level": "Medium",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 70,
+    "price": 73.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 50,
+    "price": 51.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 35,
+    "price": 43.0,
+    "level": "Medium",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 45,
+    "price": 47.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 15,
+    "price": 16.0,
+    "level": "Medium",
+    "occupancy": 70.0
+   },
+   {
+    "base_price": 45,
+    "price": 42.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 55,
+    "price": 61.0,
+    "level": "Medium",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 70,
+    "price": 91.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 40,
+    "price": 42.0,
+    "level": "Medium",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 80,
+    "price": 84.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 22.0,
+    "level": "Medium",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 30,
+    "price": 31.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 25,
+    "price": 23.0,
+    "level": "Medium",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 35,
+    "price": 37.0,
+    "level": "Medium",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 60,
+    "price": 63.0,
+    "level": "Medium",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 55,
+    "price": 56.0,
+    "level": "Medium",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 45,
+    "price": 44.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 65,
+    "price": 67.0,
+    "level": "Medium",
+    "occupancy": 38.0
+   },
+   {
+    "base_price": 65,
+    "price": 63.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 20,
+    "price": 22.0,
+    "level": "Medium",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 50,
+    "price": 48.0,
+    "level": "Medium",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 65,
+    "price": 71.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 45,
+    "price": 54.0,
+    "level": "Medium",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 60,
+    "price": 62.0,
+    "level": "Medium",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 50,
+    "price": 51.0,
+    "level": "Medium",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 65,
+    "price": 61.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "Medium",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 45,
+    "price": 37.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 75,
+    "price": 77.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 55,
+    "price": 56.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 50,
+    "price": 51.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 20,
+    "price": 20.0,
+    "level": "Medium",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 30,
+    "price": 31.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 40,
+    "price": 40.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 20.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Medium",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 85,
+    "price": 82.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 55,
+    "price": 62.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 20,
+    "price": 20.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 70,
+    "price": 66.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 95,
+    "price": 93.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 55,
+    "price": 56.0,
+    "level": "Medium",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 70,
+    "price": 75.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 65,
+    "price": 66.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 75,
+    "price": 72.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 60,
+    "price": 57.0,
+    "level": "Medium",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 15,
+    "price": 15.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 55,
+    "price": 66.0,
+    "level": "Medium",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 100,
+    "price": 103.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 45,
+    "price": 50.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 25,
+    "price": 26.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 55,
+    "price": 58.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 80,
+    "price": 82.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 60,
+    "price": 57.0,
+    "level": "Medium",
+    "occupancy": 38.0
+   },
+   {
+    "base_price": 20,
+    "price": 20.0,
+    "level": "Medium",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 60,
+    "price": 58.0,
+    "level": "Medium",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 65,
+    "price": 66.0,
+    "level": "Medium",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 30,
+    "price": 30.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 60,
+    "price": 55.0,
+    "level": "Medium",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 25,
+    "price": 25.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 25,
+    "price": 27.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 50,
+    "price": 57.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 30,
+    "price": 30.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 25,
+    "price": 25.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 55,
+    "price": 59.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 65,
+    "price": 67.0,
+    "level": "Medium",
+    "occupancy": 38.0
+   },
+   {
+    "base_price": 65,
+    "price": 66.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 55,
+    "price": 59.0,
+    "level": "Medium",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 35,
+    "price": 40.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 60,
+    "price": 61.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 20,
+    "price": 18.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 55,
+    "price": 67.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 70,
+    "price": 81.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 60,
+    "price": 66.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 50,
+    "price": 53.0,
+    "level": "Medium",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 45,
+    "price": 40.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 35,
+    "price": 34.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 23.0,
+    "level": "Medium",
+    "occupancy": 20.0
+   },
+   {
+    "base_price": 55,
+    "price": 56.0,
+    "level": "Medium",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 50,
+    "price": 50.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 40,
+    "price": 40.0,
+    "level": "Medium",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 55,
+    "price": 59.0,
+    "level": "Medium",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 35,
+    "price": 38.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 100,
+    "price": 108.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 60,
+    "price": 60.0,
+    "level": "Medium",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 50,
+    "price": 51.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 90,
+    "price": 109.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 45,
+    "price": 46.0,
+    "level": "Medium",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 40,
+    "price": 42.0,
+    "level": "Medium",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 25,
+    "price": 28.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 65,
+    "price": 77.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 30,
+    "price": 32.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 60,
+    "price": 60.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 25,
+    "price": 26.0,
+    "level": "Medium",
+    "occupancy": 38.0
+   },
+   {
+    "base_price": 65,
+    "price": 67.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 85,
+    "price": 84.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 65,
+    "price": 72.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 80,
+    "price": 86.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 25,
+    "price": 25.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 45,
+    "price": 58.0,
+    "level": "Medium",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 95,
+    "price": 97.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 45,
+    "price": 49.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 50,
+    "price": 48.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 60,
+    "price": 59.0,
+    "level": "Medium",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 65,
+    "price": 68.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 30,
+    "price": 31.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 30,
+    "price": 29.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 65,
+    "price": 73.0,
+    "level": "Medium",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 35,
+    "price": 39.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 85,
+    "price": 81.0,
+    "level": "Medium",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 70,
+    "price": 74.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 95,
+    "price": 101.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 15,
+    "price": 16.0,
+    "level": "Medium",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 55,
+    "price": 61.0,
+    "level": "Medium",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 35,
+    "price": 36.0,
+    "level": "Medium",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 25,
+    "price": 24.0,
+    "level": "Medium",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 30,
+    "price": 36.0,
+    "level": "Medium",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Medium",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 50,
+    "price": 52.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "Medium",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 50,
+    "price": 51.0,
+    "level": "Medium",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 65,
+    "price": 66.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 30,
+    "price": 31.0,
+    "level": "Medium",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 25,
+    "price": 24.0,
+    "level": "Medium",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 75,
+    "price": 69.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 55,
+    "price": 63.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 45,
+    "price": 45.0,
+    "level": "Medium",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 35,
+    "price": 38.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 25,
+    "price": 24.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 35,
+    "price": 38.0,
+    "level": "Medium",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 15,
+    "price": 17.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 65,
+    "price": 81.0,
+    "level": "Medium",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 55,
+    "price": 83.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 25,
+    "price": 25.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 15,
+    "price": 16.0,
+    "level": "Medium",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 20,
+    "price": 20.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 60,
+    "price": 56.0,
+    "level": "Medium",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 45,
+    "price": 47.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 10,
+    "price": 11.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 60,
+    "price": 59.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 25,
+    "price": 22.0,
+    "level": "Medium",
+    "occupancy": 70.0
+   },
+   {
+    "base_price": 10,
+    "price": 9.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 25,
+    "price": 27.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 65,
+    "price": 68.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 55,
+    "price": 59.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 25,
+    "price": 27.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 25,
+    "price": 27.0,
+    "level": "Medium",
+    "occupancy": 70.0
+   },
+   {
+    "base_price": 100,
+    "price": 103.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 45,
+    "price": 45.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 30,
+    "price": 34.0,
+    "level": "Medium",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 30,
+    "price": 29.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 25,
+    "price": 25.0,
+    "level": "Medium",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 25,
+    "price": 26.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 20,
+    "price": 22.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 60,
+    "price": 57.0,
+    "level": "Medium",
+    "occupancy": 40.0
+   },
+   {
+    "base_price": 65,
+    "price": 66.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 65,
+    "price": 65.0,
+    "level": "Medium",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 80,
+    "price": 92.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 20.0,
+    "level": "Medium",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 25,
+    "price": 26.0,
+    "level": "Medium",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 25,
+    "price": 26.0,
+    "level": "Medium",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 35,
+    "price": 35.0,
+    "level": "Medium",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 55,
+    "price": 57.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 65,
+    "price": 66.0,
+    "level": "Medium",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 55,
+    "price": 54.0,
+    "level": "Medium",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 10,
+    "price": 13.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 45,
+    "price": 41.0,
+    "level": "Medium",
+    "occupancy": 30.0
+   },
+   {
+    "base_price": 60,
+    "price": 60.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 70,
+    "price": 63.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 20,
+    "price": 22.0,
+    "level": "Medium",
+    "occupancy": 38.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 70,
+    "price": 74.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 50,
+    "price": 45.0,
+    "level": "Medium",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 45,
+    "price": 51.0,
+    "level": "Medium",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 25,
+    "price": 26.0,
+    "level": "Medium",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 20,
+    "price": 22.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Medium",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 15,
+    "price": 14.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 50,
+    "price": 59.0,
+    "level": "Medium",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 15,
+    "price": 15.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 50,
+    "price": 55.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 40,
+    "price": 43.0,
+    "level": "Medium",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 25,
+    "price": 25.0,
+    "level": "Medium",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 40,
+    "price": 43.0,
+    "level": "Medium",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 40,
+    "price": 49.0,
+    "level": "Medium",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "Medium",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 25,
+    "price": 25.0,
+    "level": "Medium",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 65,
+    "price": 63.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 20,
+    "price": 22.0,
+    "level": "Medium",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 55,
+    "price": 59.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 65,
+    "price": 71.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 50,
+    "price": 51.0,
+    "level": "Medium",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 50,
+    "price": 49.0,
+    "level": "Medium",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 55,
+    "price": 59.0,
+    "level": "Medium",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 45,
+    "price": 47.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 55,
+    "price": 52.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 90,
+    "price": 128.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 20,
+    "price": 19.0,
+    "level": "Medium",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 60,
+    "price": 58.0,
+    "level": "Medium",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 10,
+    "price": 12.0,
+    "level": "Medium",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 45,
+    "price": 43.0,
+    "level": "Medium",
+    "occupancy": 20.0
+   },
+   {
+    "base_price": 25,
+    "price": 27.0,
+    "level": "Medium",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 25,
+    "price": 27.0,
+    "level": "Medium",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 30,
+    "price": 39.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "Medium",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 20,
+    "price": 25.0,
+    "level": "Medium",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 70,
+    "price": 75.0,
+    "level": "Medium",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 15,
+    "price": 16.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 75,
+    "price": 76.0,
+    "level": "Medium",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 35,
+    "price": 38.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 65,
+    "price": 64.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 45,
+    "price": 48.0,
+    "level": "Medium",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 65,
+    "price": 63.0,
+    "level": "Medium",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 85,
+    "price": 83.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 40,
+    "price": 41.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 40,
+    "price": 40.0,
+    "level": "Medium",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 35,
+    "price": 34.0,
+    "level": "Medium",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 20,
+    "price": 22.0,
+    "level": "Medium",
+    "occupancy": 25.0
+   },
+   {
+    "base_price": 50,
+    "price": 46.0,
+    "level": "Medium",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 70,
+    "price": 76.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 55,
+    "price": 62.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 35,
+    "price": 41.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 65,
+    "price": 74.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 40,
+    "price": 35.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 85,
+    "price": 90.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 90,
+    "price": 117.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 45,
+    "price": 56.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 75,
+    "price": 101.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 70,
+    "price": 78.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 22.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 20,
+    "price": 23.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 75,
+    "price": 89.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 20,
+    "price": 25.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 65,
+    "price": 73.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 80,
+    "price": 85.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 24.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "High",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 50,
+    "price": 58.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 55,
+    "price": 67.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 45,
+    "price": 55.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 70,
+    "price": 88.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 45,
+    "price": 54.0,
+    "level": "High",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 20,
+    "price": 25.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 25,
+    "price": 29.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 50,
+    "price": 51.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 55,
+    "price": 82.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 50,
+    "price": 61.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 30,
+    "price": 34.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 65,
+    "price": 67.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 20,
+    "price": 27.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 65,
+    "price": 82.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 23.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 15,
+    "price": 19.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 25,
+    "price": 26.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 65,
+    "price": 73.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 70,
+    "price": 81.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 25,
+    "price": 29.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 25,
+    "price": 30.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 85,
+    "price": 113.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 55,
+    "price": 57.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 25,
+    "price": 30.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 95,
+    "price": 115.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 50,
+    "price": 57.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 20,
+    "price": 28.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 30,
+    "price": 28.0,
+    "level": "High",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 70,
+    "price": 82.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 15,
+    "price": 23.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 25,
+    "price": 26.0,
+    "level": "High",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 25,
+    "price": 27.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "High",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 70,
+    "price": 78.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 85,
+    "price": 88.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 65,
+    "price": 80.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 15,
+    "price": 16.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 75,
+    "price": 83.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 20,
+    "price": 22.0,
+    "level": "High",
+    "occupancy": 17.0
+   },
+   {
+    "base_price": 70,
+    "price": 88.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 45,
+    "price": 51.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 55,
+    "price": 70.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 40,
+    "price": 56.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 20,
+    "price": 23.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 45,
+    "price": 55.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 40,
+    "price": 52.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 30,
+    "price": 33.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 90,
+    "price": 109.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 65,
+    "price": 67.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 24.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 65,
+    "price": 69.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 50,
+    "price": 48.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 75,
+    "price": 74.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 80,
+    "price": 88.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 45,
+    "price": 46.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 25,
+    "price": 30.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 20,
+    "price": 20.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 25,
+    "price": 29.0,
+    "level": "High",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 100,
+    "price": 105.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 25,
+    "price": 32.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 20,
+    "price": 26.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 75,
+    "price": 81.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 25,
+    "price": 33.0,
+    "level": "High",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 90,
+    "price": 101.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 45,
+    "price": 56.0,
+    "level": "High",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 35,
+    "price": 39.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 25,
+    "price": 31.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 45,
+    "price": 51.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 35,
+    "price": 36.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 25,
+    "price": 31.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 40,
+    "price": 46.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 60,
+    "price": 66.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 65,
+    "price": 70.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 50,
+    "price": 61.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 65,
+    "price": 69.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 60,
+    "price": 60.0,
+    "level": "High",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 75,
+    "price": 88.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 28.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 45,
+    "price": 63.0,
+    "level": "High",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 70,
+    "price": 87.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 75,
+    "price": 83.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 65,
+    "price": 62.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 65,
+    "price": 64.0,
+    "level": "High",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 85,
+    "price": 103.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "High",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 80,
+    "price": 97.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 40,
+    "price": 44.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 25,
+    "price": 24.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 25,
+    "price": 30.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 55,
+    "price": 68.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 65,
+    "price": 75.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 90,
+    "price": 109.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 35,
+    "price": 42.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 50,
+    "price": 53.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 55,
+    "price": 60.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 75,
+    "price": 84.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 100,
+    "price": 117.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 60,
+    "price": 71.0,
+    "level": "High",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 55,
+    "price": 54.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 50,
+    "price": 59.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 30,
+    "price": 32.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 70,
+    "price": 95.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 25,
+    "price": 27.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 40,
+    "price": 47.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 45,
+    "price": 49.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 60,
+    "price": 65.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 35,
+    "price": 52.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 75,
+    "price": 90.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 60,
+    "price": 85.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 20,
+    "price": 24.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 50,
+    "price": 55.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 20,
+    "price": 25.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 75,
+    "price": 73.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 70,
+    "price": 90.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 25,
+    "price": 38.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 50,
+    "price": 55.0,
+    "level": "High",
+    "occupancy": 38.0
+   },
+   {
+    "base_price": 25,
+    "price": 25.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 45,
+    "price": 53.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 70,
+    "price": 80.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 15,
+    "price": 22.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 60,
+    "price": 70.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 85,
+    "price": 77.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 35,
+    "price": 40.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 75,
+    "price": 87.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 95,
+    "price": 105.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 20,
+    "price": 24.0,
+    "level": "High",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 25,
+    "price": 34.0,
+    "level": "High",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 70,
+    "price": 66.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 55,
+    "price": 76.0,
+    "level": "High",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 55,
+    "price": 67.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 80,
+    "price": 84.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 45,
+    "price": 50.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 20,
+    "price": 23.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 15,
+    "price": 16.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 40,
+    "price": 50.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 45,
+    "price": 44.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 70,
+    "price": 75.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 75,
+    "price": 78.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 75,
+    "price": 81.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 22.0,
+    "level": "High",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 50,
+    "price": 50.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 85,
+    "price": 93.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 25,
+    "price": 25.0,
+    "level": "High",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 60,
+    "price": 64.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 40,
+    "price": 53.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 30,
+    "price": 32.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 50,
+    "price": 47.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 45,
+    "price": 56.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 40,
+    "price": 43.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 70,
+    "price": 91.0,
+    "level": "High",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 25,
+    "price": 30.0,
+    "level": "High",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 25,
+    "price": 28.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 70,
+    "price": 78.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 35,
+    "price": 38.0,
+    "level": "High",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 65,
+    "price": 74.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 30,
+    "price": 34.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 50,
+    "price": 57.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 50,
+    "price": 50.0,
+    "level": "High",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 70,
+    "price": 93.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 80,
+    "price": 84.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 40,
+    "price": 45.0,
+    "level": "High",
+    "occupancy": 62.0
+   },
+   {
+    "base_price": 50,
+    "price": 52.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 25,
+    "price": 27.0,
+    "level": "High",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 65,
+    "price": 64.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 30,
+    "price": 35.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 65,
+    "price": 77.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 45,
+    "price": 63.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 60,
+    "price": 65.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 40,
+    "price": 40.0,
+    "level": "High",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 90,
+    "price": 108.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 60,
+    "price": 73.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 10,
+    "price": 12.0,
+    "level": "High",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 15,
+    "price": 19.0,
+    "level": "High",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 55,
+    "price": 70.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 10,
+    "price": 13.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 25,
+    "price": 30.0,
+    "level": "High",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 95,
+    "price": 117.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 20.0,
+    "level": "High",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 65,
+    "price": 75.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 10,
+    "price": 10.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 65,
+    "price": 59.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 25,
+    "price": 27.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 45,
+    "price": 67.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 55,
+    "price": 59.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 65,
+    "price": 68.0,
+    "level": "High",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 40,
+    "price": 42.0,
+    "level": "High",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 25,
+    "price": 32.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 60,
+    "price": 72.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 70,
+    "price": 87.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 70,
+    "price": 104.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 65,
+    "price": 66.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 65,
+    "price": 65.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 50,
+    "price": 63.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 50,
+    "price": 50.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 65,
+    "price": 92.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 50,
+    "price": 53.0,
+    "level": "High",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 75,
+    "price": 72.0,
+    "level": "High",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 80,
+    "price": 92.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 35,
+    "price": 55.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 70,
+    "price": 99.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 25,
+    "price": 33.0,
+    "level": "High",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 50,
+    "price": 53.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 65,
+    "price": 70.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 20,
+    "price": 20.0,
+    "level": "High",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 25,
+    "price": 39.0,
+    "level": "High",
+    "occupancy": 60.0
+   },
+   {
+    "base_price": 70,
+    "price": 90.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 60,
+    "price": 68.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 25,
+    "price": 31.0,
+    "level": "High",
+    "occupancy": 90.0
+   },
+   {
+    "base_price": 20,
+    "price": 24.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 95,
+    "price": 95.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 50,
+    "price": 51.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 35,
+    "price": 46.0,
+    "level": "High",
+    "occupancy": 33.0
+   },
+   {
+    "base_price": 40,
+    "price": 52.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 50,
+    "price": 52.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 45,
+    "price": 58.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 30,
+    "price": 29.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 40,
+    "price": 48.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 45,
+    "price": 51.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 70,
+    "price": 72.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 40,
+    "price": 43.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 55,
+    "price": 60.0,
+    "level": "High",
+    "occupancy": 70.0
+   },
+   {
+    "base_price": 60,
+    "price": 79.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 50,
+    "price": 60.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 45,
+    "price": 58.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 60,
+    "price": 85.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 50,
+    "price": 62.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 25,
+    "price": 32.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 85,
+    "price": 89.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 50,
+    "price": 69.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 55,
+    "price": 66.0,
+    "level": "High",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 50,
+    "price": 49.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 25,
+    "price": 28.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 25,
+    "price": 34.0,
+    "level": "High",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 35,
+    "price": 37.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 25,
+    "price": 25.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 60,
+    "price": 75.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 25,
+    "price": 32.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 60,
+    "price": 75.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 35,
+    "price": 44.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 85,
+    "price": 104.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 70,
+    "price": 98.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 40,
+    "price": 44.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 45,
+    "price": 42.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 35,
+    "price": 36.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 85,
+    "price": 98.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 10,
+    "price": 13.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 50,
+    "price": 67.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 45,
+    "price": 41.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 30,
+    "price": 36.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 50,
+    "price": 63.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 55,
+    "price": 63.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 20,
+    "price": 22.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 45,
+    "price": 59.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 50,
+    "price": 59.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 60,
+    "price": 68.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 45,
+    "price": 48.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 95,
+    "price": 116.0,
+    "level": "High",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 75,
+    "price": 83.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 30,
+    "price": 33.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 75,
+    "price": 78.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 25,
+    "price": 29.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 25,
+    "price": 32.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 45,
+    "price": 49.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 35,
+    "price": 43.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 45,
+    "price": 62.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 30,
+    "price": 34.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 65,
+    "price": 70.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 45,
+    "price": 53.0,
+    "level": "High",
+    "occupancy": 50.0
+   },
+   {
+    "base_price": 55,
+    "price": 71.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 20,
+    "price": 22.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 25,
+    "price": 31.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 50,
+    "price": 57.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 20,
+    "price": 21.0,
+    "level": "High",
+    "occupancy": 88.0
+   },
+   {
+    "base_price": 35,
+    "price": 43.0,
+    "level": "High",
+    "occupancy": 67.0
+   },
+   {
+    "base_price": 20,
+    "price": 22.0,
+    "level": "High",
+    "occupancy": 0.0
+   },
+   {
+    "base_price": 65,
+    "price": 69.0,
+    "level": "High",
+    "occupancy": 80.0
+   },
+   {
+    "base_price": 50,
+    "price": 51.0,
+    "level": "High",
+    "occupancy": 83.0
+   },
+   {
+    "base_price": 45,
+    "price": 50.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 70,
+    "price": 79.0,
+    "level": "High",
+    "occupancy": 75.0
+   },
+   {
+    "base_price": 55,
+    "price": 76.0,
+    "level": "High",
+    "occupancy": 50.0
+   }
+  ],
+  "sampled_from": 41748,
+  "spearman_demand_price": 0.31,
+  "spearman_demand_price_ratio": 0.644
+ },
+ "distance_vs_cancellation": [
+  {
+   "band": "0-0.5 km",
+   "bookings": 9654,
+   "cancellation_rate": 7.6
+  },
+  {
+   "band": "0.5-1 km",
+   "bookings": 17719,
+   "cancellation_rate": 9.6
+  },
+  {
+   "band": "1-2 km",
+   "bookings": 11568,
+   "cancellation_rate": 12.1
+  },
+  {
+   "band": "2-3 km",
+   "bookings": 2199,
+   "cancellation_rate": 17.1
+  },
+  {
+   "band": "3-5 km",
+   "bookings": 702,
+   "cancellation_rate": 27.6
+  },
+  {
+   "band": "5-10 km",
+   "bookings": 161,
+   "cancellation_rate": 23.0
+  }
+ ],
+ "status_distribution": [
+  {
+   "status": "Completed",
+   "bookings": 37562,
+   "share": 88.6
+  },
+  {
+   "status": "Cancelled",
+   "bookings": 4441,
+   "share": 10.5
+  },
+  {
+   "status": "Active",
+   "bookings": 375,
+   "share": 0.9
+  }
+ ],
+ "correlation": {
+  "labels": [
+   "Hour",
+   "Weekend",
+   "Capacity",
+   "Occupancy",
+   "Demand",
+   "Price",
+   "Price / base",
+   "Duration",
+   "Amount",
+   "Distance",
+   "Cancelled"
+  ],
+  "cells": [
+   {
+    "x": "Hour",
+    "y": "Hour",
+    "value": 1.0
+   },
+   {
+    "x": "Weekend",
+    "y": "Hour",
+    "value": 0.06
+   },
+   {
+    "x": "Capacity",
+    "y": "Hour",
+    "value": -0.01
+   },
+   {
+    "x": "Occupancy",
+    "y": "Hour",
+    "value": 0.0
+   },
+   {
+    "x": "Demand",
+    "y": "Hour",
+    "value": 0.0
+   },
+   {
+    "x": "Price",
+    "y": "Hour",
+    "value": -0.01
+   },
+   {
+    "x": "Price / base",
+    "y": "Hour",
+    "value": 0.01
+   },
+   {
+    "x": "Duration",
+    "y": "Hour",
+    "value": -0.11
+   },
+   {
+    "x": "Amount",
+    "y": "Hour",
+    "value": -0.08
+   },
+   {
+    "x": "Distance",
+    "y": "Hour",
+    "value": -0.01
+   },
+   {
+    "x": "Cancelled",
+    "y": "Hour",
+    "value": 0.0
+   },
+   {
+    "x": "Hour",
+    "y": "Weekend",
+    "value": 0.06
+   },
+   {
+    "x": "Weekend",
+    "y": "Weekend",
+    "value": 1.0
+   },
+   {
+    "x": "Capacity",
+    "y": "Weekend",
+    "value": 0.0
+   },
+   {
+    "x": "Occupancy",
+    "y": "Weekend",
+    "value": -0.05
+   },
+   {
+    "x": "Demand",
+    "y": "Weekend",
+    "value": -0.08
+   },
+   {
+    "x": "Price",
+    "y": "Weekend",
+    "value": -0.02
+   },
+   {
+    "x": "Price / base",
+    "y": "Weekend",
+    "value": -0.06
+   },
+   {
+    "x": "Duration",
+    "y": "Weekend",
+    "value": -0.04
+   },
+   {
+    "x": "Amount",
+    "y": "Weekend",
+    "value": -0.03
+   },
+   {
+    "x": "Distance",
+    "y": "Weekend",
+    "value": -0.01
+   },
+   {
+    "x": "Cancelled",
+    "y": "Weekend",
+    "value": -0.0
+   },
+   {
+    "x": "Hour",
+    "y": "Capacity",
+    "value": -0.01
+   },
+   {
+    "x": "Weekend",
+    "y": "Capacity",
+    "value": 0.0
+   },
+   {
+    "x": "Capacity",
+    "y": "Capacity",
+    "value": 1.0
+   },
+   {
+    "x": "Occupancy",
+    "y": "Capacity",
+    "value": 0.32
+   },
+   {
+    "x": "Demand",
+    "y": "Capacity",
+    "value": 0.06
+   },
+   {
+    "x": "Price",
+    "y": "Capacity",
+    "value": -0.12
+   },
+   {
+    "x": "Price / base",
+    "y": "Capacity",
+    "value": 0.03
+   },
+   {
+    "x": "Duration",
+    "y": "Capacity",
+    "value": 0.02
+   },
+   {
+    "x": "Amount",
+    "y": "Capacity",
+    "value": -0.06
+   },
+   {
+    "x": "Distance",
+    "y": "Capacity",
+    "value": 0.04
+   },
+   {
+    "x": "Cancelled",
+    "y": "Capacity",
+    "value": 0.03
+   },
+   {
+    "x": "Hour",
+    "y": "Occupancy",
+    "value": 0.0
+   },
+   {
+    "x": "Weekend",
+    "y": "Occupancy",
+    "value": -0.05
+   },
+   {
+    "x": "Capacity",
+    "y": "Occupancy",
+    "value": 0.32
+   },
+   {
+    "x": "Occupancy",
+    "y": "Occupancy",
+    "value": 1.0
+   },
+   {
+    "x": "Demand",
+    "y": "Occupancy",
+    "value": 0.59
+   },
+   {
+    "x": "Price",
+    "y": "Occupancy",
+    "value": 0.17
+   },
+   {
+    "x": "Price / base",
+    "y": "Occupancy",
+    "value": 0.41
+   },
+   {
+    "x": "Duration",
+    "y": "Occupancy",
+    "value": 0.07
+   },
+   {
+    "x": "Amount",
+    "y": "Occupancy",
+    "value": 0.16
+   },
+   {
+    "x": "Distance",
+    "y": "Occupancy",
+    "value": 0.06
+   },
+   {
+    "x": "Cancelled",
+    "y": "Occupancy",
+    "value": 0.11
+   },
+   {
+    "x": "Hour",
+    "y": "Demand",
+    "value": 0.0
+   },
+   {
+    "x": "Weekend",
+    "y": "Demand",
+    "value": -0.08
+   },
+   {
+    "x": "Capacity",
+    "y": "Demand",
+    "value": 0.06
+   },
+   {
+    "x": "Occupancy",
+    "y": "Demand",
+    "value": 0.59
+   },
+   {
+    "x": "Demand",
+    "y": "Demand",
+    "value": 1.0
+   },
+   {
+    "x": "Price",
+    "y": "Demand",
+    "value": 0.31
+   },
+   {
+    "x": "Price / base",
+    "y": "Demand",
+    "value": 0.64
+   },
+   {
+    "x": "Duration",
+    "y": "Demand",
+    "value": 0.1
+   },
+   {
+    "x": "Amount",
+    "y": "Demand",
+    "value": 0.27
+   },
+   {
+    "x": "Distance",
+    "y": "Demand",
+    "value": 0.11
+   },
+   {
+    "x": "Cancelled",
+    "y": "Demand",
+    "value": 0.12
+   },
+   {
+    "x": "Hour",
+    "y": "Price",
+    "value": -0.01
+   },
+   {
+    "x": "Weekend",
+    "y": "Price",
+    "value": -0.02
+   },
+   {
+    "x": "Capacity",
+    "y": "Price",
+    "value": -0.12
+   },
+   {
+    "x": "Occupancy",
+    "y": "Price",
+    "value": 0.17
+   },
+   {
+    "x": "Demand",
+    "y": "Price",
+    "value": 0.31
+   },
+   {
+    "x": "Price",
+    "y": "Price",
+    "value": 1.0
+   },
+   {
+    "x": "Price / base",
+    "y": "Price",
+    "value": 0.29
+   },
+   {
+    "x": "Duration",
+    "y": "Price",
+    "value": 0.06
+   },
+   {
+    "x": "Amount",
+    "y": "Price",
+    "value": 0.69
+   },
+   {
+    "x": "Distance",
+    "y": "Price",
+    "value": -0.13
+   },
+   {
+    "x": "Cancelled",
+    "y": "Price",
+    "value": 0.03
+   },
+   {
+    "x": "Hour",
+    "y": "Price / base",
+    "value": 0.01
+   },
+   {
+    "x": "Weekend",
+    "y": "Price / base",
+    "value": -0.06
+   },
+   {
+    "x": "Capacity",
+    "y": "Price / base",
+    "value": 0.03
+   },
+   {
+    "x": "Occupancy",
+    "y": "Price / base",
+    "value": 0.41
+   },
+   {
+    "x": "Demand",
+    "y": "Price / base",
+    "value": 0.64
+   },
+   {
+    "x": "Price",
+    "y": "Price / base",
+    "value": 0.29
+   },
+   {
+    "x": "Price / base",
+    "y": "Price / base",
+    "value": 1.0
+   },
+   {
+    "x": "Duration",
+    "y": "Price / base",
+    "value": 0.06
+   },
+   {
+    "x": "Amount",
+    "y": "Price / base",
+    "value": 0.23
+   },
+   {
+    "x": "Distance",
+    "y": "Price / base",
+    "value": 0.06
+   },
+   {
+    "x": "Cancelled",
+    "y": "Price / base",
+    "value": 0.12
+   },
+   {
+    "x": "Hour",
+    "y": "Duration",
+    "value": -0.11
+   },
+   {
+    "x": "Weekend",
+    "y": "Duration",
+    "value": -0.04
+   },
+   {
+    "x": "Capacity",
+    "y": "Duration",
+    "value": 0.02
+   },
+   {
+    "x": "Occupancy",
+    "y": "Duration",
+    "value": 0.07
+   },
+   {
+    "x": "Demand",
+    "y": "Duration",
+    "value": 0.1
+   },
+   {
+    "x": "Price",
+    "y": "Duration",
+    "value": 0.06
+   },
+   {
+    "x": "Price / base",
+    "y": "Duration",
+    "value": 0.06
+   },
+   {
+    "x": "Duration",
+    "y": "Duration",
+    "value": 1.0
+   },
+   {
+    "x": "Amount",
+    "y": "Duration",
+    "value": 0.74
+   },
+   {
+    "x": "Distance",
+    "y": "Duration",
+    "value": 0.01
+   },
+   {
+    "x": "Cancelled",
+    "y": "Duration",
+    "value": 0.04
+   },
+   {
+    "x": "Hour",
+    "y": "Amount",
+    "value": -0.08
+   },
+   {
+    "x": "Weekend",
+    "y": "Amount",
+    "value": -0.03
+   },
+   {
+    "x": "Capacity",
+    "y": "Amount",
+    "value": -0.06
+   },
+   {
+    "x": "Occupancy",
+    "y": "Amount",
+    "value": 0.16
+   },
+   {
+    "x": "Demand",
+    "y": "Amount",
+    "value": 0.27
+   },
+   {
+    "x": "Price",
+    "y": "Amount",
+    "value": 0.69
+   },
+   {
+    "x": "Price / base",
+    "y": "Amount",
+    "value": 0.23
+   },
+   {
+    "x": "Duration",
+    "y": "Amount",
+    "value": 0.74
+   },
+   {
+    "x": "Amount",
+    "y": "Amount",
+    "value": 1.0
+   },
+   {
+    "x": "Distance",
+    "y": "Amount",
+    "value": -0.08
+   },
+   {
+    "x": "Cancelled",
+    "y": "Amount",
+    "value": 0.05
+   },
+   {
+    "x": "Hour",
+    "y": "Distance",
+    "value": -0.01
+   },
+   {
+    "x": "Weekend",
+    "y": "Distance",
+    "value": -0.01
+   },
+   {
+    "x": "Capacity",
+    "y": "Distance",
+    "value": 0.04
+   },
+   {
+    "x": "Occupancy",
+    "y": "Distance",
+    "value": 0.06
+   },
+   {
+    "x": "Demand",
+    "y": "Distance",
+    "value": 0.11
+   },
+   {
+    "x": "Price",
+    "y": "Distance",
+    "value": -0.13
+   },
+   {
+    "x": "Price / base",
+    "y": "Distance",
+    "value": 0.06
+   },
+   {
+    "x": "Duration",
+    "y": "Distance",
+    "value": 0.01
+   },
+   {
+    "x": "Amount",
+    "y": "Distance",
+    "value": -0.08
+   },
+   {
+    "x": "Distance",
+    "y": "Distance",
+    "value": 1.0
+   },
+   {
+    "x": "Cancelled",
+    "y": "Distance",
+    "value": 0.09
+   },
+   {
+    "x": "Hour",
+    "y": "Cancelled",
+    "value": 0.0
+   },
+   {
+    "x": "Weekend",
+    "y": "Cancelled",
+    "value": -0.0
+   },
+   {
+    "x": "Capacity",
+    "y": "Cancelled",
+    "value": 0.03
+   },
+   {
+    "x": "Occupancy",
+    "y": "Cancelled",
+    "value": 0.11
+   },
+   {
+    "x": "Demand",
+    "y": "Cancelled",
+    "value": 0.12
+   },
+   {
+    "x": "Price",
+    "y": "Cancelled",
+    "value": 0.03
+   },
+   {
+    "x": "Price / base",
+    "y": "Cancelled",
+    "value": 0.12
+   },
+   {
+    "x": "Duration",
+    "y": "Cancelled",
+    "value": 0.04
+   },
+   {
+    "x": "Amount",
+    "y": "Cancelled",
+    "value": 0.05
+   },
+   {
+    "x": "Distance",
+    "y": "Cancelled",
+    "value": 0.09
+   },
+   {
+    "x": "Cancelled",
+    "y": "Cancelled",
+    "value": 1.0
+   }
+  ],
+  "method": "spearman"
+ },
+ "user_behaviour": {
+  "bookings_per_driver": [
+   {
+    "band": "1-5",
+    "drivers": 191
+   },
+   {
+    "band": "6-10",
+    "drivers": 228
+   },
+   {
+    "band": "11-20",
+    "drivers": 314
+   },
+   {
+    "band": "21-40",
+    "drivers": 409
+   },
+   {
+    "band": "41-80",
+    "drivers": 245
+   },
+   {
+    "band": "81+",
+    "drivers": 85
+   }
+  ],
+  "drivers_with_bookings": 1472,
+  "drivers_total": 1500,
+  "median_bookings_per_driver": 21.0,
+  "mean_bookings_per_driver": 28.8,
+  "duration_distribution": [
+   {
+    "hours": 0.5,
+    "bookings": 3569
+   },
+   {
+    "hours": 1.0,
+    "bookings": 7877
+   },
+   {
+    "hours": 1.5,
+    "bookings": 5924
+   },
+   {
+    "hours": 2.0,
+    "bookings": 7250
+   },
+   {
+    "hours": 2.5,
+    "bookings": 4227
+   },
+   {
+    "hours": 3.0,
+    "bookings": 4887
+   },
+   {
+    "hours": 4.0,
+    "bookings": 3719
+   },
+   {
+    "hours": 5.0,
+    "bookings": 2329
+   },
+   {
+    "hours": 6.0,
+    "bookings": 2384
+   },
+   {
+    "hours": 8.0,
+    "bookings": 118
+   },
+   {
+    "hours": 10.0,
+    "bookings": 61
+   },
+   {
+    "hours": 12.0,
+    "bookings": 33
+   }
+  ],
+  "vehicle_mix": [
+   {
+    "vehicle": "Two-Wheeler",
+    "drivers": 694,
+    "bookings": 18718
+   },
+   {
+    "vehicle": "Car",
+    "drivers": 605,
+    "bookings": 21225
+   },
+   {
+    "vehicle": "SUV",
+    "drivers": 201,
+    "bookings": 2435
+   }
+  ]
+ },
+ "price_elasticity": {
+  "spearman": -0.238,
+  "bands": [
+   {
+    "band": "<0.8x",
+    "listings": 78,
+    "relative_bookings": 1.19
+   },
+   {
+    "band": "0.8-0.95x",
+    "listings": 61,
+    "relative_bookings": 1.23
+   },
+   {
+    "band": "0.95-1.05x",
+    "listings": 200,
+    "relative_bookings": 1.05
+   },
+   {
+    "band": "1.05-1.2x",
+    "listings": 71,
+    "relative_bookings": 0.87
+   },
+   {
+    "band": ">1.2x",
+    "listings": 90,
+    "relative_bookings": 0.81
+   }
+  ]
+ },
+ "insights": [
+  "Weekday bookings peak at 18:00 (12.53 per day) against about 5.3 per hour at midday; weekends have no morning peak.",
+  "Friday is the busiest day (128.1 bookings per day) and Sunday the quietest (94.7).",
+  "Monthly bookings grew from 2,938 in Oct 25 to 4,294 in Sep 26.",
+  "Zone C has the most bookings (10,636) and Zone H the fewest (1,635); Zone A earns the most completed revenue.",
+  "Average occupancy rises with demand: 32.7% at Low, 59.1% at Medium and 73.2% at High.",
+  "Owners charge 0.954x, 1.037x and 1.156x their base price at Low, Medium and High demand.",
+  "Cancellations rise with distance: 7.6% within 0.5 km against 27.6% at 3-5 km.",
+  "Listings priced above similar listings in their zone get fewer bookings (Spearman -0.238)."
+ ]
+}

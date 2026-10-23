@@ -1,0 +1,26 @@
+﻿src/components/booking/BookingModal.tsx(2,79): error TS6305: Output file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/dist/index.d.ts' has not been built from source file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/src/index.ts'.
+src/pages/auth/login.tsx(3,45): error TS6305: Output file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/dist/index.d.ts' has not been built from source file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/src/index.ts'.
+src/pages/auth/login.tsx(55,39): error TS7006: Parameter 'u' implicitly has an 'any' type.
+src/pages/auth/login.tsx(78,39): error TS7006: Parameter 'u' implicitly has an 'any' type.
+src/pages/bookings/detail.tsx(2,104): error TS6305: Output file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/dist/index.d.ts' has not been built from source file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/src/index.ts'.
+src/pages/bookings/index.tsx(1,33): error TS6305: Output file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/dist/index.d.ts' has not been built from source file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/src/index.ts'.
+src/pages/bookings/index.tsx(47,27): error TS7006: Parameter 'booking' implicitly has an 'any' type.
+src/pages/dashboard/index.tsx(1,97): error TS6305: Output file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/dist/index.d.ts' has not been built from source file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/src/index.ts'.
+src/pages/dashboard/index.tsx(71,44): error TS7006: Parameter 'entry' implicitly has an 'any' type.
+src/pages/dashboard/index.tsx(71,51): error TS7006: Parameter 'index' implicitly has an 'any' type.
+src/pages/dashboard/index.tsx(97,45): error TS7006: Parameter 'spot' implicitly has an 'any' type.
+src/pages/dashboard/index.tsx(97,51): error TS7006: Parameter 'i' implicitly has an 'any' type.
+src/pages/dashboard/index.tsx(142,43): error TS7006: Parameter 'booking' implicitly has an 'any' type.
+src/pages/home.tsx(6,30): error TS6305: Output file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/dist/index.d.ts' has not been built from source file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/src/index.ts'.
+src/pages/home.tsx(176,53): error TS7006: Parameter 'spot' implicitly has an 'any' type.
+src/pages/list-spot/index.tsx(6,31): error TS6305: Output file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/dist/index.d.ts' has not been built from source file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/src/index.ts'.
+src/pages/list-spot/index.tsx(76,19): error TS7006: Parameter 'data' implicitly has an 'any' type.
+src/pages/profile/index.tsx(1,63): error TS6305: Output file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/dist/index.d.ts' has not been built from source file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/src/index.ts'.
+src/pages/profile/index.tsx(134,19): error TS7006: Parameter 'updatedUser' implicitly has an 'any' type.
+src/pages/spots/detail.tsx(10,8): error TS6305: Output file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/dist/index.d.ts' has not been built from source file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/src/index.ts'.
+src/pages/spots/detail.tsx(238,47): error TS7006: Parameter 'amenity' implicitly has an 'any' type.
+src/pages/spots/detail.tsx(288,30): error TS7006: Parameter 'review' implicitly has an 'any' type.
+src/pages/spots/index.tsx(4,30): error TS6305: Output file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/dist/index.d.ts' has not been built from source file 'D:/Spark-Tank-Project-main(1)/Spark-Tank-Project-main/lib/api-client-react/src/index.ts'.
+src/pages/spots/index.tsx(212,33): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/pages/spots/index.tsx(233,24): error TS7006: Parameter 'spot' implicitly has an 'any' type.
+src/pages/spots/index.tsx(233,30): error TS7006: Parameter 'i' implicitly has an 'any' type.

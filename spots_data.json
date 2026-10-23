@@ -1,0 +1,28 @@
+﻿{
+    "value":  [
+                  {
+                      "id":  1,
+                      "ownerId":  1,
+                      "name":  "Kamakoti Appartments near Ranganathan Street",
+                      "description":  "",
+                      "address":  "Narayana Appartments, Rameshwaram Road, T-Nagar, Chennai, 600017",
+                      "city":  "Chennai",
+                      "state":  "TAMIL NADU",
+                      "latitude":  "13.0382255",
+                      "longitude":  "80.2285458",
+                      "pricePerHour":  "50.00",
+                      "pricePerDay":  "500.00",
+                      "vehicleType":  "both",
+                      "totalSlots":  2,
+                      "availableSlots":  1,
+                      "amenities":  "24x7,security,covered",
+                      "imageUrl":  null,
+                      "rating":  null,
+                      "totalReviews":  0,
+                      "isActive":  true,
+                      "createdAt":  "2026-04-04T07:25:07.187Z",
+                      "updatedAt":  "2026-04-05T07:14:06.657Z"
+                  }
+              ],
+    "Count":  1
+}

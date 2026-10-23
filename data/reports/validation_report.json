@@ -1,0 +1,414 @@
+{
+  "synthetic_data": true,
+  "notice": "All data is synthetic. Results describe the generated dataset only and are not real-world parking statistics.",
+  "source_dir": "/home/claude/parkease_src/ParkEase-main/data/raw",
+  "files": {
+    "users.csv": {
+      "rows": 1800,
+      "columns": 4,
+      "bytes": 60126,
+      "sha256": "5619911c0746240579582da8ab05e88a9a904f5178e86fe6392aabb36c64dac0"
+    },
+    "parking_slots.csv": {
+      "rows": 500,
+      "columns": 9,
+      "bytes": 28819,
+      "sha256": "75d7e91036b79c47eacc9780d942d2146440b12cd1f00d7d01a583a2151c3240"
+    },
+    "parking_bookings.csv": {
+      "rows": 42378,
+      "columns": 20,
+      "bytes": 4777540,
+      "sha256": "246fec1e25e5192961f5faa0f0a31f6cdd7840768ac3daf2d90fd1750a6fad4d"
+    }
+  },
+  "summary": {
+    "users": 1800,
+    "drivers": 1500,
+    "owners": 300,
+    "slots": 500,
+    "bookings": 42378,
+    "booking_date_min": "2025-10-01",
+    "booking_date_max": "2026-09-30",
+    "distinct_booking_days": 365
+  },
+  "checks_total": 42,
+  "checks_passed": 42,
+  "checks_failed": 0,
+  "all_passed": true,
+  "checks": [
+    {
+      "group": "Keys",
+      "name": "Duplicate primary IDs (users / slots / bookings)",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Keys",
+      "name": "Missing primary or foreign IDs",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Keys",
+      "name": "ID formats (DRV0001 / OWN0001 / SLOT0001 / BOOK000001)",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Relationships",
+      "name": "Slot owner_id is not a registered owner",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Relationships",
+      "name": "Booking driver_id is not a registered driver",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Relationships",
+      "name": "Booking owner_id is not a registered owner",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Relationships",
+      "name": "Booking slot_id does not exist",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Relationships",
+      "name": "Booking owner_id differs from the slot's owner",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Relationships",
+      "name": "Booking parking_zone differs from the slot's zone",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Relationships",
+      "name": "Booking slot_capacity differs from the slot's capacity",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Dates and time",
+      "name": "day_of_week does not match booking_date",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Dates and time",
+      "name": "is_weekend does not match booking_date",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Dates and time",
+      "name": "is_holiday not constant within a date",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Dates and time",
+      "name": "hour outside 0-23",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Dates and time",
+      "name": "Booking dated before its driver registered",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Dates and time",
+      "name": "Booking dated before its owner registered",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Occupancy",
+      "name": "Invalid occupancy values (negative, above capacity, rate not 0-100)",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Occupancy",
+      "name": "occupied_slots + available_slots != slot_capacity",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Occupancy",
+      "name": "occupancy_rate != occupied_slots / slot_capacity * 100",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Occupancy",
+      "name": "Booking made with no free space (available_slots < 1)",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Price and duration",
+      "name": "total_amount != price_per_hour x booking_duration_hours",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Price and duration",
+      "name": "total_amount missing or not positive",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Price and duration",
+      "name": "price_per_hour and booking_duration_hours both missing (unrecoverable)",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Price and duration",
+      "name": "Booking price outside Rs 5-200",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Price and duration",
+      "name": "Slot base price outside Rs 10-100",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Price and duration",
+      "name": "Booking duration is not one of the allowed values",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Categories",
+      "name": "Invalid role",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Categories",
+      "name": "Invalid parking_zone",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Categories",
+      "name": "Invalid demand_level",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Categories",
+      "name": "Invalid booking_status",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Categories",
+      "name": "'Active' status outside the final 3 days",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Categories",
+      "name": "Invalid vehicle type",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Categories",
+      "name": "Invalid capacity value",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Categories",
+      "name": "Invalid is_active / is_weekend / is_holiday flag",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Geography",
+      "name": "Slot coordinates missing or more than 10 km from the centre",
+      "violations": 0,
+      "passed": true,
+      "detail": "farthest slot is 6.43 km from the centre"
+    },
+    {
+      "group": "Geography",
+      "name": "distance_km outside 0.1-10 km",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Behaviour",
+      "name": "Driver's vehicle does not fit the slot's supported type",
+      "violations": 0,
+      "passed": true,
+      "detail": "40615 bookings compared"
+    },
+    {
+      "group": "Behaviour",
+      "name": "Same driver has overlapping bookings",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Behaviour",
+      "name": "More than one demand_level within a slot, date and hour",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Behaviour",
+      "name": "More than one price_per_hour within a slot, date and hour",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Behaviour",
+      "name": "Bookings in one slot-hour do not fill it one space at a time",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "Missing values",
+      "name": "Missing values outside the documented columns",
+      "violations": 0,
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "missing_values": [
+    {
+      "table": "users",
+      "column": "preferred_vehicle_type",
+      "missing": 36,
+      "percent": 2.0,
+      "expected": true
+    },
+    {
+      "table": "slots",
+      "column": "vehicle_type_supported",
+      "missing": 10,
+      "percent": 2.0,
+      "expected": true
+    },
+    {
+      "table": "bookings",
+      "column": "occupancy_rate",
+      "missing": 636,
+      "percent": 1.5,
+      "expected": true
+    },
+    {
+      "table": "bookings",
+      "column": "booking_duration_hours",
+      "missing": 509,
+      "percent": 1.2,
+      "expected": true
+    },
+    {
+      "table": "bookings",
+      "column": "price_per_hour",
+      "missing": 424,
+      "percent": 1.0,
+      "expected": true
+    },
+    {
+      "table": "bookings",
+      "column": "distance_km",
+      "missing": 848,
+      "percent": 2.0,
+      "expected": true
+    },
+    {
+      "table": "bookings",
+      "column": "demand_level",
+      "missing": 636,
+      "percent": 1.5,
+      "expected": true
+    }
+  ],
+  "class_distribution": {
+    "demand_level": {
+      "Medium": 18357,
+      "Low": 13382,
+      "High": 10003,
+      "(missing)": 636
+    },
+    "booking_status": {
+      "Completed": 37562,
+      "Cancelled": 4441,
+      "Active": 375
+    },
+    "role": {
+      "driver": 1500,
+      "owner": 300
+    },
+    "parking_zone": {
+      "Zone C": 10636,
+      "Zone A": 7545,
+      "Zone B": 7273,
+      "Zone D": 6878,
+      "Zone F": 3036,
+      "Zone G": 2976,
+      "Zone E": 2399,
+      "Zone H": 1635
+    }
+  },
+  "warnings": []
+}

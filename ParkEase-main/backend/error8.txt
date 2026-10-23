@@ -1,0 +1,11 @@
+C:\Users\SAI\Desktop\Spark-Tank-Project\lib\db\src\index.ts:8
+  throw new Error(
+        ^
+
+Error: DATABASE_URL must be set. Did you forget to provision a database?
+    at <anonymous> (C:\Users\SAI\Desktop\Spark-Tank-Project\lib\db\src\index.ts:8:9)
+    at ModuleJob.run (node:internal/modules/esm/module_job:413:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:660:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.12.0

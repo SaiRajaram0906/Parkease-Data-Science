@@ -1,0 +1,11 @@
+C:\Users\SAI\Desktop\Spark-Tank-Project\artifacts\api-server\src\index.ts:7
+  throw new Error(
+        ^
+
+Error: PORT environment variable is required but was not provided.
+    at <anonymous> (C:\Users\SAI\Desktop\Spark-Tank-Project\artifacts\api-server\src\index.ts:7:9)
+    at ModuleJob.run (node:internal/modules/esm/module_job:413:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:660:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.12.0

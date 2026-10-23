@@ -1,0 +1,101 @@
+========================================================================================
+PARKEASE DATA VALIDATION REPORT (synthetic dataset)
+========================================================================================
+All data is synthetic. Results describe the generated dataset only and are not real-world parking statistics.
+
+users.csv                  1800 rows x  4 cols   sha256 5619911c07462405...
+parking_slots.csv           500 rows x  9 cols   sha256 75d7e91036b79c47...
+parking_bookings.csv      42378 rows x 20 cols   sha256 246fec1e25e51929...
+drivers: 1500   owners: 300
+booking dates: 2025-10-01 to 2026-09-30 (365 distinct days)
+
+----------------------------------------------------------------------------------------
+KEYS
+----------------------------------------------------------------------------------------
+[PASS] Duplicate primary IDs (users / slots / bookings)                            0
+[PASS] Missing primary or foreign IDs                                              0
+[PASS] ID formats (DRV0001 / OWN0001 / SLOT0001 / BOOK000001)                      0
+----------------------------------------------------------------------------------------
+RELATIONSHIPS
+----------------------------------------------------------------------------------------
+[PASS] Slot owner_id is not a registered owner                                     0
+[PASS] Booking driver_id is not a registered driver                                0
+[PASS] Booking owner_id is not a registered owner                                  0
+[PASS] Booking slot_id does not exist                                              0
+[PASS] Booking owner_id differs from the slot's owner                              0
+[PASS] Booking parking_zone differs from the slot's zone                           0
+[PASS] Booking slot_capacity differs from the slot's capacity                      0
+----------------------------------------------------------------------------------------
+DATES AND TIME
+----------------------------------------------------------------------------------------
+[PASS] day_of_week does not match booking_date                                     0
+[PASS] is_weekend does not match booking_date                                      0
+[PASS] is_holiday not constant within a date                                       0
+[PASS] hour outside 0-23                                                           0
+[PASS] Booking dated before its driver registered                                  0
+[PASS] Booking dated before its owner registered                                   0
+----------------------------------------------------------------------------------------
+OCCUPANCY
+----------------------------------------------------------------------------------------
+[PASS] Invalid occupancy values (negative, above capacity, rate not 0-100)         0
+[PASS] occupied_slots + available_slots != slot_capacity                           0
+[PASS] occupancy_rate != occupied_slots / slot_capacity * 100                      0
+[PASS] Booking made with no free space (available_slots < 1)                       0
+----------------------------------------------------------------------------------------
+PRICE AND DURATION
+----------------------------------------------------------------------------------------
+[PASS] total_amount != price_per_hour x booking_duration_hours                     0
+[PASS] total_amount missing or not positive                                        0
+[PASS] price_per_hour and booking_duration_hours both missing (unrecoverable)      0
+[PASS] Booking price outside Rs 5-200                                              0
+[PASS] Slot base price outside Rs 10-100                                           0
+[PASS] Booking duration is not one of the allowed values                           0
+----------------------------------------------------------------------------------------
+CATEGORIES
+----------------------------------------------------------------------------------------
+[PASS] Invalid role                                                                0
+[PASS] Invalid parking_zone                                                        0
+[PASS] Invalid demand_level                                                        0
+[PASS] Invalid booking_status                                                      0
+[PASS] 'Active' status outside the final 3 days                                    0
+[PASS] Invalid vehicle type                                                        0
+[PASS] Invalid capacity value                                                      0
+[PASS] Invalid is_active / is_weekend / is_holiday flag                            0
+----------------------------------------------------------------------------------------
+GEOGRAPHY
+----------------------------------------------------------------------------------------
+[PASS] Slot coordinates missing or more than 10 km from the centre                 0  (farthest slot is 6.43 km from the centre)
+[PASS] distance_km outside 0.1-10 km                                               0
+----------------------------------------------------------------------------------------
+BEHAVIOUR
+----------------------------------------------------------------------------------------
+[PASS] Driver's vehicle does not fit the slot's supported type                     0  (40615 bookings compared)
+[PASS] Same driver has overlapping bookings                                        0
+[PASS] More than one demand_level within a slot, date and hour                     0
+[PASS] More than one price_per_hour within a slot, date and hour                   0
+[PASS] Bookings in one slot-hour do not fill it one space at a time                0
+----------------------------------------------------------------------------------------
+MISSING VALUES
+----------------------------------------------------------------------------------------
+[PASS] Missing values outside the documented columns                               0
+
+----------------------------------------------------------------------------------------
+MISSING VALUES (raw data, not yet handled)
+----------------------------------------------------------------------------------------
+users     preferred_vehicle_type         36  (2.00 %)  documented
+slots     vehicle_type_supported         10  (2.00 %)  documented
+bookings  occupancy_rate                636  (1.50 %)  documented
+bookings  booking_duration_hours        509  (1.20 %)  documented
+bookings  price_per_hour                424  (1.00 %)  documented
+bookings  distance_km                   848  (2.00 %)  documented
+bookings  demand_level                  636  (1.50 %)  documented
+
+----------------------------------------------------------------------------------------
+CLASS DISTRIBUTION
+----------------------------------------------------------------------------------------
+demand_level: Medium 18357 (43.3 %), Low 13382 (31.6 %), High 10003 (23.6 %), (missing) 636 (1.5 %)
+booking_status: Completed 37562 (88.6 %), Cancelled 4441 (10.5 %), Active 375 (0.9 %)
+role: driver 1500 (83.3 %), owner 300 (16.7 %)
+parking_zone: Zone C 10636 (25.1 %), Zone A 7545 (17.8 %), Zone B 7273 (17.2 %), Zone D 6878 (16.2 %), Zone F 3036 (7.2 %), Zone G 2976 (7.0 %), Zone E 2399 (5.7 %), Zone H 1635 (3.9 %)
+
+RESULT: 42 of 42 checks passed, 0 failed.

@@ -1,0 +1,213 @@
+========================================================================================
+PARKEASE SYNTHETIC DATA - VALIDATION REPORT
+========================================================================================
+users.csv            :   1800 rows x 4 cols
+parking_slots.csv    :    500 rows x 9 cols
+parking_bookings.csv :  42378 rows x 20 cols
+drivers: 1500   owners: 300
+booking date range   : 2025-10-01 to 2026-09-30 (365 distinct days)
+
+----------------------------------------------------------------------------------------
+A. CONSTRAINT CHECKS (missing values are skipped where a field was intentionally blanked)
+----------------------------------------------------------------------------------------
+[PASS] 1. Duplicate primary IDs (users / slots / bookings)            violations: 0 
+[PASS] 2. Missing primary / foreign IDs                               violations: 0 
+[PASS]    ID formats (DRV0001 / OWN0001 / SLOT0001 / BOOK000001)      violations: 0 
+[PASS] 3. Broken foreign keys (driver, owner, slot, slot->owner)      violations: 0 
+[PASS]    Booking owner_id matches the slot's owner                   violations: 0 
+[PASS]    Booking parking_zone matches the slot's zone                violations: 0 
+[PASS]    Booking slot_capacity matches the slot's capacity           violations: 0 
+[PASS] 4. Invalid dates (bookings / registrations)                    violations: 0 
+[PASS] 5. day_of_week does not match booking_date                     violations: 0 
+[PASS]    is_weekend does not match booking_date                      violations: 0 
+[PASS]    is_holiday not constant within a date                       violations: 0 
+[PASS]    hour outside 0-23                                           violations: 0 
+[PASS]    Booking before driver registered                            violations: 0 
+[PASS]    Booking before owner registered                             violations: 0 
+[PASS] 6. Invalid occupancy values (negative, > capacity, rate not 0-100) violations: 0 
+[PASS] 7. occupied_slots + available_slots != slot_capacity           violations: 0 
+[PASS]    occupancy_rate != occupied/capacity*100                     violations: 0 
+[PASS]    Booking made with no free space (available_slots < 1)       violations: 0 
+[PASS] 8. total_amount != price_per_hour x booking_duration_hours     violations: 0 
+[PASS]    total_amount missing or <= 0                                violations: 0 
+[PASS]    price and duration both missing (unrecoverable)             violations: 0 
+[PASS] 9. Invalid prices (booking price outside Rs 5-200)             violations: 0 
+[PASS]    Invalid slot base price (outside Rs 10-100)                 violations: 0 
+[PASS] 10. Invalid booking durations                                  violations: 0 
+[PASS] 11. Invalid roles                                              violations: 0 
+[PASS] 12. Invalid demand levels                                      violations: 0 
+[PASS] 13. Invalid booking statuses                                   violations: 0 
+[PASS]     'Active' outside the final 3 days of the data              violations: 0 
+[PASS]     Invalid capacity values                                    violations: 0 
+[PASS]     Invalid is_active / is_weekend / is_holiday flags          violations: 0 
+[PASS] 14. Impossible geographic values (all slots within 10 km of centre) violations: 0 (max 6.43 km)
+[PASS]     distance_km outside 0.1-10 km                              violations: 0 
+[PASS] 15. Driver vehicle does not fit the slot's supported type      violations: 0 
+[PASS] 16. Same driver has overlapping bookings                       violations: 0 
+
+RESULT: 34 of 34 checks passed, 0 failed.
+
+----------------------------------------------------------------------------------------
+B. MISSING VALUES (intentional)
+----------------------------------------------------------------------------------------
+users.csv              preferred_vehicle_type        36  (2.00 %)
+parking_slots.csv      vehicle_type_supported        10  (2.00 %)
+parking_bookings.csv   occupancy_rate               636  (1.50 %)
+parking_bookings.csv   booking_duration_hours       509  (1.20 %)
+parking_bookings.csv   price_per_hour               424  (1.00 %)
+parking_bookings.csv   distance_km                  848  (2.00 %)
+parking_bookings.csv   demand_level                 636  (1.50 %)
+
+----------------------------------------------------------------------------------------
+C. SUMMARY STATISTICS
+----------------------------------------------------------------------------------------
+                          count    mean     std  min    25%    50%     75%      max
+hour                    42378.0   14.49    4.56  6.0  10.00  15.00   18.00    23.00
+slot_capacity           42378.0    5.25    2.31  1.0   4.00   5.00    6.00    10.00
+occupied_slots          42378.0    3.02    2.15  0.0   1.00   3.00    4.00     9.00
+available_slots         42378.0    2.23    1.61  1.0   1.00   2.00    3.00    10.00
+occupancy_rate          41742.0   54.01   26.90  0.0  33.33  60.00   75.00    90.00
+booking_duration_hours  41869.0    2.38    1.56  0.5   1.00   2.00    3.00    12.00
+price_per_hour          41954.0   44.36   24.69  8.0  24.00  41.00   62.00   155.00
+total_amount            42378.0  107.63  101.24  4.0  37.50  75.00  144.00  1224.00
+distance_km             41530.0    0.99    0.75  0.1   0.52   0.79    1.21     8.48
+
+                     count     mean      std      min      25%      50%      75%       max
+capacity             500.0   4.5020   2.1999   1.0000   3.0000   4.0000   6.0000   10.0000
+base_price_per_hour  500.0  38.8300  23.3124  10.0000  20.0000  30.0000  55.0000  100.0000
+latitude             500.0  13.0639   0.0213  13.0205  13.0452  13.0654  13.0782   13.1080
+longitude            500.0  80.2361   0.0190  80.1883  80.2237  80.2379  80.2499   80.2777
+
+----------------------------------------------------------------------------------------
+D. CLASS DISTRIBUTIONS
+----------------------------------------------------------------------------------------
+demand_level
+   Medium      18357  (43.32 %)
+   Low         13382  (31.58 %)
+   High        10003  (23.60 %)
+   nan           636  (1.50 %)
+booking_status
+   Completed   37562  (88.64 %)
+   Cancelled    4441  (10.48 %)
+   Active        375  (0.88 %)
+users.role: driver=1500, owner=300
+users.preferred_vehicle_type: Two-Wheeler=810, Car=716, SUV=238, nan=36
+slots.vehicle_type_supported: Car=171, Two-Wheeler=166, All=102, SUV=51, nan=10
+slots.is_active: active=458, inactive=42
+holiday dates in data: 15
+drivers with at least one booking: 1472 of 1500
+owners with at least one booking : 300 of 300
+slots with at least one booking  : 499 of 500
+slots per owner: min 1, max 7
+bookings per active driver: median 21, mean 28.8, max 191
+
+----------------------------------------------------------------------------------------
+E. RELATIONSHIPS
+----------------------------------------------------------------------------------------
+Spearman correlations (pairwise, missing rows skipped)
+   demand_num               vs occupancy_rate         +0.595
+   demand_num               vs price_per_hour         +0.310
+   demand_num               vs price_ratio            +0.643
+   demand_num               vs weekday_peak           +0.397
+   demand_num               vs distance_km            +0.114
+   occupancy_rate           vs price_per_hour         +0.168
+   occupancy_rate           vs slot_capacity          +0.320
+   price_per_hour           vs base_price             +0.982
+   booking_duration_hours   vs total_amount           +0.737
+   price_per_hour           vs total_amount           +0.692
+   cancelled                vs distance_km            +0.089
+   cancelled                vs price_ratio            +0.118
+   cancelled                vs occupancy_rate         +0.112
+   cancelled                vs demand_num             +0.121
+   distance_km              vs price_per_hour         -0.128
+   hour                     vs occupancy_rate         +0.001
+
+By demand level
+              bookings  occupancy   price  price_vs_base  distance  cancel_rate
+demand_level                                                                   
+Low              13382     32.724  35.199          0.954     0.924        0.066
+Medium           18357     59.070  44.574          1.037     0.965        0.098
+High             10003     73.226  56.137          1.156     1.112        0.170
+
+By zone
+              bookings  occupancy  available  price  duration  distance  high_share  cancel_rate  revenue_completed  slots  avg_capacity  avg_base_price
+parking_zone                                                                                                                                            
+Zone A            7545      52.09       1.75  67.97      2.58      0.82        0.29         0.10          1166434.0     78          3.55           64.17
+Zone B            7273      57.80       2.63  46.73      2.57      1.08        0.24         0.11           760542.5     70          5.71           46.57
+Zone C           10636      60.81       1.90  52.19      2.30      0.94        0.37         0.12          1106407.0     83          4.73           51.75
+Zone D            6878      56.40       2.53  37.06      2.47      0.98        0.19         0.10           551695.5     60          5.52           38.25
+Zone E            2399      48.82       2.45  18.47      2.63      1.12        0.13         0.10           103654.5     46          4.76           19.24
+Zone F            3036      41.91       2.35  32.40      1.69      0.87        0.05         0.08           149635.5     57          3.60           34.12
+Zone G            2976      43.58       2.37  17.75      2.17      1.24        0.08         0.09           102301.5     60          3.92           18.33
+Zone H            1635      40.86       2.64  13.14      2.17      1.35        0.04         0.13            40141.0     46          4.15           13.70
+
+By hour
+      weekday_bookings_per_day  weekend_holiday_bookings_per_day  weekday_occupancy  weekend_occupancy
+hour                                                                                                  
+6                         2.10                              1.11              35.03              27.45
+7                         4.72                              1.92              46.45              33.33
+8                        10.45                              3.35              64.59              37.15
+9                        11.72                              4.86              65.93              41.13
+10                        8.81                              6.51              57.65              46.99
+11                        5.80                              7.36              46.50              50.70
+12                        5.24                              7.18              45.06              54.31
+13                        5.30                              7.41              45.30              55.59
+14                        5.24                              6.92              44.03              52.93
+15                        5.00                              7.33              42.88              53.68
+16                        6.10                              7.62              47.39              53.81
+17                       10.49                              8.32              60.01              57.93
+18                       12.53                              8.75              65.37              59.80
+19                       11.22                              8.25              62.10              58.88
+20                        8.04                              6.61              55.46              56.31
+21                        4.79                              4.86              47.42              48.75
+22                        3.15                              3.23              38.20              37.74
+23                        1.56                              1.64              30.82              29.59
+
+Bookings per day by day of week
+             bookings  days  per_day
+day_of_week                         
+Monday           6116    52    117.6
+Tuesday          6261    52    120.4
+Wednesday        6368    53    120.2
+Thursday         6145    52    118.2
+Friday           6661    52    128.1
+Saturday         5901    52    113.5
+Sunday           4926    52     94.7
+
+Bookings per month
+booking_date
+2025-10    2938
+2025-11    2756
+2025-12    3363
+2026-01    3252
+2026-02    3170
+2026-03    3634
+2026-04    3584
+2026-05    3318
+2026-06    3692
+2026-07    4095
+2026-08    4282
+2026-09    4294
+
+Cancellation rate by distance band
+             count   mean
+distance_km              
+(0.0, 0.5]    9736  0.075
+(0.5, 1.0]   17106  0.095
+(1.0, 2.0]   11596  0.120
+(2.0, 3.0]    2223  0.169
+(3.0, 5.0]     707  0.274
+(5.0, 10.0]    162  0.228
+
+Holiday vs normal day (bookings per day)
+            bookings  days  per_day
+is_holiday                         
+0              40905   350    116.9
+1               1473    15     98.2
+
+Slot level: bookings vs price relative to zone median (Spearman) -0.087
+Slot level: bookings vs price relative to same zone + vehicle type (Spearman) -0.243
+Mean occupancy_rate by slot_capacity: 1:0, 2:38, 3:49, 4:55, 5:58, 6:58, 8:61, 10:64
+Slot level: bookings vs capacity (Spearman) +0.492
+Bookings per slot: min 5, median 69, max 414
+Slot occupancy vs the same slot's previous booked day (Pearson) +0.279
